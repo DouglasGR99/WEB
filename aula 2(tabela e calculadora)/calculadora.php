@@ -21,5 +21,13 @@
         <br>
         <input type="submit" value="Calcular">
     </form>
+
+    <?php 
+        include("calc.php");
+
+        if (isset($resultado)) {
+            echo "<p>O resultado é: $resultado</p>";
+        }
+    ?>
 </body>
 </html>
