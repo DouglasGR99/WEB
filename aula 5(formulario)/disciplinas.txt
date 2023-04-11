@@ -1,0 +1,2 @@
+nome;sigla;carga
+desenvolvimento web;3daw;80
