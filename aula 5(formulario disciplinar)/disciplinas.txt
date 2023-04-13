@@ -1,3 +1,22 @@
 nome;sigla;carga
-desenvolvimento web;3daw;80rato;;
-rato;rto;55
+fundamentos de alg de programação;1FAC;40
+introdução a analise de sistemas;1IAS;40
+interface homem-maquina;1IHM;20
+lingua portuguesa;1LPO;40
+matematica basica;1MAB;40
+matematica para computação;1MAC;40
+organização de computadores;1ORG;40
+calculo;2CAL;40
+construção de aplicações web;2CAW;40
+fundamentos de programação;2FPR;40
+lingua estrangeira;2LES;20
+metodos e procs admin;2MPA;20
+eng de requisitos;2REQ;40
+fundamentos de sistemas operacionais;2SOP;40
+tecnicas e paradigmas humanos;2TPH;40
+algebra linear;3ALG;40
+desenvolvimento web;3DAW;40
+estrutura de dados;3ESD;40
+projeto de banco de dados;3PBD;40
+programação orientada a obj;3POB;40
+fundamentos de redes;3RSD;40

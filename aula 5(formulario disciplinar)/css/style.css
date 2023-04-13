@@ -1,0 +1,76 @@
+/* Body */
+body {
+    background-color: #f2f2f2;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Boxes */
+  .caixas {
+    background-color: #ffffff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #e6e6e6;
+  }
+  
+  /* Main */
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Botão */
+  .botaoBonito {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+  
+  .botaoBonito:hover {
+    opacity: 0.8;
+  }
+  
+  .aprovado {
+    background-color: #4CAF50;
+  }
+  
+  .reprovado {
+    background-color: #f44336;
+  }
+  
+  /* Tabela */
+  .tabela {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .tabela td,
+  .tabela th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .tabela tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .tabela tr:hover {
+    background-color: #ddd;
+  }
+  
+  .tabela th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
