@@ -39,6 +39,6 @@
         </tr>
         <?php } ?>
     </table>
-</main>
+    </main>
 </body>
 </html>

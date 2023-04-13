@@ -2,20 +2,20 @@
     $nome = "";
     $sigla = "";
     $carga = "";
-    if ($_SERVER[REQUEST_METHOD] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nome = $_POST["nome"];
         $sigla = $_POST["sigla"];
         $carga = $_POST["carga"];
         $linha = "";
         echo "nome " . $nome . " sigla: " . $sigla . " carga: " . $carga;
-        if (!file_exists(filename "disciplinas.txt")) {
-            $arcDisc = fopen(filename "disciplinas.txt", mode "a") or die("erro ao criar arquivo");
+        if (!file_exists( "disciplinas.txt")) {
+            $arcDisc = fopen( "disciplinas.txt",  "a") or die("erro ao criar arquivo");
             $linha = "nome;sigla;carga\n";
             fwrite($arcDisc, $linha);
             fclose($arcDisc);
         }
-        $arcDisc = fopen(filename "disciplinas.txt", mode "a") or die("erro ao criar arquivo");
-        $linha = $nome . ";" $sigla . ";" . $carga . \n;
+        $arcDisc = fopen( "disciplinas.txt",  "a") or die("erro ao criar arquivo");
+        $linha = $nome . ";" . $sigla . ";" . $carga . "\n";
         fwrite($arcDisc, $linha);
         fclose($arcDisc);
     }

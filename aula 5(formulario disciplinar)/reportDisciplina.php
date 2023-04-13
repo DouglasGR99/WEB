@@ -9,10 +9,10 @@
 <body>
     <h1>Listar Disciplina</h1>
     <?php
-        $arcDisc = fopen(filename "disciplinas.txt", mode "r") or die ("erro ao ler arquivo");
+        $arcDisc = fopen("disciplinas.txt" ,  "r") or die ("erro ao ler arquivo");
         // echo fgets($arcDisc);
         // echo "<br>";
-        $cabecalho = explode(separator ";", fgets(arcDisc));
+        $cabecalho = explode( ";" , fgets($arcDisc));
         // echo $cabecalho[0];
         echo "<br>";
         echo fgets($arcDisc);
