@@ -20,3 +20,4 @@ estrutura de dados;3ESD;40
 projeto de banco de dados;3PBD;40
 programação orientada a obj;3POB;40
 fundamentos de redes;3RSD;40
+

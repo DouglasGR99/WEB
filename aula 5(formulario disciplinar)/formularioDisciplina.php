@@ -31,14 +31,20 @@
 </head>
 <body>
     <main class="caixas">
-        <h1>Formulario Disciplinar</h1>
+        <h1>Formulario Disciplinar </h1>
         <form action="formularioDisciplina.php" method="POST">
-            <h3>Nome: <input type="text" name="nome"></h3>
-            <h3>Sigla: <input type="text" name="sigla"></h3>
-            <h3>Carga H: <input type="text" name="carga"></h3>
-            <br>
-            <input class="botaoBonito" type="submit" value="Criar nova disciplina"> 
+            Nome: <label>
+                <input type="text" name="nome">
+            </label>
+            Sigla: <label>
+                <input type="text" name="sigla">
+            </label>
+            Carga H: <label>
+                <input type="text" name="carga">
+            </label>
         </form>
+        <input class="botaoBonito botaoArquivo" type="submit" value="Criar nova disciplina">
+        <a href="reportDisciplina.php"><button class="botaoBonito botaoPagina">Listar Disciplinas</button></a>
     </main>
 </body>
 </html>

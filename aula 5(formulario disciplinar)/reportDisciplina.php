@@ -41,6 +41,11 @@
             }
             ?>
         </table>
+        <br>
+        <form action="modificar.php" method="post">
+            <input class="negativo botaoBonito botaoArquivo" type="submit" name="modificar" value="Remover Disciplina">
+        </form>
+        <a href="formularioDisciplina.php"><button class="botaoBonito botaoPagina">Voltar ao Formulário</button></a>
         <?php fclose($arcDisc); ?>
     </main>
 </body>
