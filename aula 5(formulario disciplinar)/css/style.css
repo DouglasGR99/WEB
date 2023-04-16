@@ -61,6 +61,8 @@ label {
     background-color: #f44336;
   }
 
+
+
 .botaoArquivo {
   position: absolute;
   bottom: 10px;
@@ -71,6 +73,7 @@ label {
   position: absolute;
   bottom: 10px;
   right: 10px;
+  background-color: #87d2e7;
 }
   
   /* Tabela */

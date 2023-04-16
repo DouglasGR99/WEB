@@ -39,7 +39,7 @@
             Sigla: <label>
                 <input type="text" name="sigla">
             </label>
-            Carga H: <label>
+            Carga Horária: <label>
                 <input type="text" name="carga">
             </label>
         </form>
