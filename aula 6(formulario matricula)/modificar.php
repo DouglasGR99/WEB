@@ -1,8 +1,8 @@
 <?php
 if(isset($_POST['modificar'])) { // Verifica se o botão foi clicado
-    $linhas = file("disciplinas.txt"); // Lê todas as linhas do arquivo em um array
+    $linhas = file("alunos.txt"); // Lê todas as linhas do arquivo em um array
     array_splice($linhas, -1); // Remove a última linha do array
-    $arquivo = fopen("disciplinas.txt", "w"); // Abre o arquivo em modo de escrita
+    $arquivo = fopen("alunos.txt", "w"); // Abre o arquivo em modo de escrita
     fwrite($arquivo, implode("", $linhas)); // Escreve as linhas restantes no arquivo
     fclose($arquivo); // Fecha o arquivo
     echo "Arquivo modificado com sucesso!"; // Mensagem de sucesso

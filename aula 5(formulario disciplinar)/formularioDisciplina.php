@@ -42,8 +42,8 @@
             Carga Horária: <label>
                 <input type="text" name="carga">
             </label>
+            <input class="botaoBonito botaoArquivo" type="submit" value="Criar nova disciplina">
         </form>
-        <input class="botaoBonito botaoArquivo" type="submit" value="Criar nova disciplina">
         <a href="reportDisciplina.php"><button class="botaoBonito botaoPagina">Listar Disciplinas</button></a>
     </main>
 </body>
