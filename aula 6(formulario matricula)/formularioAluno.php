@@ -16,7 +16,7 @@
             fwrite($arcDisc, $linha); // fwrite escreve uma string no arquivo
             fclose($arcDisc);
         }
-        $arcDisc = fopen( "alunos.txt",  "a") or die("erro ao criar arquivo"); // abre o arquivo para adicionar
+        $arcDisc = fopen( "alunos.txt",  "a") or die("erro ao editar arquivo"); // abre o arquivo para adicionar
         $linha = $nome . ";" . $cpf . ";" . $matricula . ";" . $DTingresso . "\n"; // cria a linha a ser adicionada
         fwrite($arcDisc, $linha); // escreve a linha no arquivo
         fclose($arcDisc);   // fecha o arquivo
@@ -32,24 +32,32 @@
     <title>Fornulario Aluno php</title>
 </head>
 <body>
-    <main class="caixas">
-        <h1>Formulario para Matricula de Aluno </h1>
-        <form action="formularioAluno.php" method="POST">
-            Nome: <label>
-                <input type="text" name="nome">
-            </label>
-            CPF: <label>
-                <input type="text" name="cpf">
-            </label>
-            Matricula: <label>
-                <input type="text" name="matricula">
-            </label>
-            Data de ingresso: <label>
-                <input type="text" name="DTingresso">
-            </label>
-			<input class="botaoBonito botaoArquivo" type="submit" value="Criar novo Aluno">
-        </form>
-        <a href="reportAluno.php"><button class="botaoBonito botaoPagina">Listar Alunos</button></a>
-    </main>
+<header class="caixas">
+    <h1>Criar Aluno</h1>
+    <nav>
+        <a href="pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
+        <a href="reportAluno.php"><button class="botaoBonito pagRead">Listar Alunos</button></a>
+        <a href="atualizarAluno.php"><button class="botaoBonito pagUpdate">Atualizar Aluno</button></a>
+        <a href="removerAluno.php"><button class="botaoBonito pagDelete">Remover Aluno</button></a>
+    </nav>
+</header>
+
+<main class="caixas">
+    <form action="formularioAluno.php" method="POST">
+        Nome: <label>
+            <input type="text" name="nome">
+        </label>
+        CPF: <label>
+            <input type="text" name="cpf">
+        </label>
+        Matricula: <label>
+            <input type="text" name="matricula">
+        </label>
+        Data de ingresso: <label>
+            <input type="text" name="DTingresso">
+        </label>
+        <input class="botaoBonito botaoArquivo" type="submit" value="Criar novo Aluno">
+    </form>
+</main>
 </body>
 </html>

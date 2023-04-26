@@ -64,16 +64,36 @@ label {
 
 
 .botaoArquivo {
-  position: absolute;
+  /*position: absolute;*/
   bottom: 10px;
   left: 10px;
 }
 
 .botaoPagina {
-  position: absolute;
+  /*position: absolute;*/
   bottom: 10px;
   right: 10px;
+  background-color: #000000;
+}
+
+.pagInicio {
+  background-color: #b45f00;
+}
+
+.pagCreate {
+  background-color: #4CAF50;
+}
+
+.pagRead {
   background-color: #87d2e7;
+}
+
+.pagUpdate {
+    background-color: #5f2dde;
+}
+
+.pagDelete {
+    background-color: #f44336;
 }
   
   /* Tabela */
