@@ -17,10 +17,20 @@ if(isset($_POST['modificar'])) {
         unset($linhas[$indice_remover]); // Remove a linha do array
         $arquivo = fopen("alunos.txt", "w"); // Abre o arquivo em modo de escrita
         fwrite($arquivo, implode("", $linhas)); // Escreve as linhas restantes no arquivo
-        fclose($arquivo); // Fecha o arquivo
-        echo "Linha removida com sucesso!"; // Mensagem de sucesso
+        fclose($arquivo);
+        echo '<script type="text/javascript">
+                alert("Aluno removido com sucesso!");
+              </script>';
     } else {
-        echo "Linha não encontrada."; // Mensagem de erro
+        echo
+            '<script type="text/javascript">
+            let text = "Aluno não encontrado, criar novo Aluno?";
+            if (confirm(text) == true) {
+                window.location.href = "formularioAluno.php";
+            } else {
+                window.location.href = "removerAluno.php";
+            }
+            </script>';
     }
 }
 ?>

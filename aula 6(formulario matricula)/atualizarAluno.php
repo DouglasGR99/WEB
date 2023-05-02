@@ -1,5 +1,5 @@
 <?php
-    //ainda faltando
+
 ?>
 
 <!DOCTYPE html>
@@ -21,5 +21,14 @@
         <a href="removerAluno.php"><button class="botaoBonito pagDelete">Remover Aluno</button></a>
     </nav>
 </header>
+
+<main class="caixas">
+    <form action="atualizarAluno.php" method="post">
+        <label for="matricula">Informe a matricula do aluno a ser atualizado:</label>
+        <input type="text" id="matricula" name="matricula">
+        <br><br>
+        <input type="submit" value="Buscar" name="modificar" class="botaoBonito negativo">
+    </form>
+</main>
 </body>
 </html>
