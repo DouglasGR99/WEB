@@ -1,1 +1,3 @@
 nome;cpf;matricula;DTingresso
+Adriel;123;2210478300001;03/2022
+Gabi;4321;2210478300009;03/2022

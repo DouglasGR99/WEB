@@ -23,9 +23,9 @@ if(isset($_POST['modificar'])) {
               </script>';
     } else {
         echo
-            '<script type="text/javascript">
+        '<script type="text/javascript">
             let text = "Aluno não encontrado, criar novo Aluno?";
-            if (confirm(text) == true) {
+            if (confirm(text) === true) {
                 window.location.href = "formularioAluno.php";
             } else {
                 window.location.href = "removerAluno.php";
