@@ -1,24 +1,25 @@
 <?php
-if(isset($_POST['modificar'])) {
+if(isset($_POST['buscarAL'])) {
     $matricula = $_POST['matricula']; // Informação fornecida pelo usuário para identificar a linha a ser removida
 
     $linhas = file("alunos.txt");
 
-    $indice_atualizar = -1;
+    $indice_buscar = -1;
     foreach($linhas as $indice => $linha) {
         $dados = explode(";", $linha);
         if($dados[2] == $matricula) { // Verifica se a linha contém a matrícula fornecida
-            $indice_atualizar = $indice; // Guarda o índice da linha a ser atualizada
+            $indice_buscar = $indice; // Guarda o índice da linha a ser atualizada
             break;
         }
     }
 
-    if($indice_atualizar !== -1) { // Se a linha for encontrada
+    if($indice_buscar !== -1) { // Se a linha for encontrada
         echo
         '<script type="text/javascript">
             let text = "Aluno encontrado! atualizar Aluno?";
             if (confirm(text) === true) {
                 window.location.href = "alunoAtualizado.php";
+                $_SESSION["matricula"] = $matriculaSelec;
             } else {
                 window.location.href = "atualizarAluno.php";
             }
@@ -62,7 +63,7 @@ if(isset($_POST['modificar'])) {
         <label for="matricula">Informe a matricula do aluno a ser atualizado:</label>
         <input type="text" id="matricula" name="matricula">
         <br><br>
-        <input type="submit" value="Buscar" name="modificar" class="botaoBonito pagUpdate">
+        <input type="submit" value="Buscar" name="buscarAL" class="botaoBonito pagUpdate">
     </form>
 </main>
 </body>
