@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(isset($_POST['buscarAL'])) {
     $matricula = $_POST['matricula']; // Informação fornecida pelo usuário para identificar a linha a ser removida
 
@@ -12,28 +13,24 @@ if(isset($_POST['buscarAL'])) {
             break;
         }
     }
+    $matriculaSelec = $matricula;
+    $_SESSION["matricula"] = $matriculaSelec;
 
     if($indice_buscar !== -1) { // Se a linha for encontrada
-        echo
-        '<script type="text/javascript">
+        echo '<script type="text/javascript">
             let text = "Aluno encontrado! atualizar Aluno?";
-            if (confirm(text) === true) {
-                window.location.href = "alunoAtualizado.php";
-                $_SESSION["matricula"] = $matriculaSelec;
-            } else {
-                window.location.href = "atualizarAluno.php";
-            }
-            </script>';
+            if (confirm(text) === true) { 
+                window.location.href = "alunoAtualizado.php"; 
+            } else { 
+                window.location.href = "atualizarAluno.php"; 
+            } </script>';
     } else {
-        echo
-        '<script type="text/javascript">
+        echo '<script type="text/javascript">
             let text = "Aluno não encontrado, criar novo Aluno?";
             if (confirm(text) === true) {
                 window.location.href = "formularioAluno.php";
             } else {
-                window.location.href = "atualizarAluno.php";
-            }
-            </script>';
+                window.location.href = "atualizarAluno.php"; } </script>';
     }
 }
 ?>

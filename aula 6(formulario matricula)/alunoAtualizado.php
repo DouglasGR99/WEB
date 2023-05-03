@@ -1,10 +1,5 @@
 <?php
-$nome = "";
-$cpf = "";
-$matricula = "";
-$DTingresso =  "";
-$linha_nova = "";
-
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for POST (envio de dados) então faça:
     //variaveis para atualizar
     $nome = $_POST["nome"];
@@ -51,26 +46,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remover linha</title>
+    <title>Atualizar aluno</title>
 </head>
 <body>
 <header class="caixas">
-    <h1>Remover Aluno</h1>
+    <h1>Atualizar Aluno</h1>
     <nav>
         <a href="pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
+        <a href="reportAluno.php"><button class="botaoBonito pagRead">Listar Alunos</button></a>
         <a href="atualizarAluno.php"><button class="botaoBonito pagUpdate">Voltar a busca</button></a>
     </nav>
 </header>
 
 <main class="caixas">
     <form action="alunoAtualizado.php" method="POST">
-        Nome: <label>
+        Novo Nome: <label>
             <input type="text" name="nome">
         </label>
-        CPF: <label>
+        Novo CPF: <label>
             <input type="text" name="cpf">
         </label>
-        Data de ingresso: <label>
+        Nova data de ingresso: <label>
             <input type="text" name="DTingresso">
         </label>
         <input type="submit" name="modificar" value="Modificar Aluno" class="botaoBonito pagUpdate">
