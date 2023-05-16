@@ -51,7 +51,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,10 +61,8 @@
 <header class="caixas">
     <h1>Criar Pergunta</h1>
     <nav>
-        <a href="pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
-        <a href="reportPerg.php"><button class="botaoBonito pagRead">Listar Perguntas</button></a>
-        <a href="atualizaPergMultipla.php"><button class="botaoBonito pagUpdate">Atualizar Perguntas</button></a>
-        <a href="removePergMultipla.php"><button class="botaoBonito pagDelete">Remover Perguntas</button></a>
+        <a href="../pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
+        <a href="../reportPerg.php"><button class="botaoBonito pagRead">Listar Perguntas</button></a>
     </nav>
 </header>
 

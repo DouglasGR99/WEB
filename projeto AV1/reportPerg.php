@@ -12,9 +12,6 @@
     <h1>Listar Perguntas</h1>
     <nav>
         <a href="pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
-        <a href="criaPergMultipla.php"><button class="botaoBonito pagCreate">Criar Pergunta</button></a>
-        <a href="atualizaPergMultipla.php"><button class="botaoBonito pagUpdate">Atualizar Pergunta</button></a>
-        <a href="removePergMultipla.php"><button class="botaoBonito pagDelete">Remover Pergunta</button></a>
     </nav>
 </header>
 

@@ -38,20 +38,18 @@ if(isset($_POST['buscarPERG'])) {
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atualizar Pergunta php</title>
+    <title>Atualizar Pergunta Optativa php</title>
 </head>
 <body>
 <header class="caixas">
-    <h1>Atualizar Pergunta</h1>
+    <h1>Atualizar Pergunta Optativa</h1>
     <nav>
-        <a href="pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
-        <a href="criaPergMultipla.php"><button class="botaoBonito pagCreate">Criar Pergunta</button></a>
-        <a href="reportPerg.php"><button class="botaoBonito pagRead">Listar Perguntas</button></a>
-        <a href="removePergMultipla.php"><button class="botaoBonito pagDelete">Remover Pergunta</button></a>
+        <a href="../pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
+        <a href="../reportPerg.php"><button class="botaoBonito pagRead">Listar Perguntas</button></a>
     </nav>
 </header>
 

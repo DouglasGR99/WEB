@@ -43,7 +43,7 @@ if(isset($_POST['modificar'])) {
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,15 +53,13 @@ if(isset($_POST['modificar'])) {
 <header class="caixas">
     <h1>Remover Pergunta Discursiva</h1>
     <nav>
-        <a href="pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
-        <a href="criaPergMultipla.php"><button class="botaoBonito pagCreate">Criar Pergunta</button></a>
-        <a href="reportPerg.php"><button class="botaoBonito pagRead">Listar Perguntas</button></a>
-        <a href="atualizaPergMultipla.php"><button class="botaoBonito pagUpdate">Atualizar Pergunta</button></a>
+        <a href="../pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
+        <a href="../reportPerg.php"><button class="botaoBonito pagRead">Listar Perguntas</button></a>
     </nav>
 </header>
 
 <main class="caixas">
-    <form action="removePergMultipla.php" method="post">
+    <form action="../crud%20multiplas/removePergMultipla.php" method="post">
         <label for="pergunta">Informe a pergunta a ser removida:</label>
         <input type="text" id="pergunta" name="pergunta">
         <br><br>
