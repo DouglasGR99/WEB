@@ -1,1 +1,1 @@
-pergunta;gabarito
+pergunta / resposta; Indice / gabarito

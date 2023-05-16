@@ -1,13 +1,12 @@
 <?php
 if(isset($_POST['modificar'])) {
-    $pergunta = $_POST['pergunta']; // Informação fornecida pelo usuário para identificar a linha a ser removida
-
+    $questaoID = $_POST['questaoID'];
     $linhas = file("perguntas.txt"); // Lê todas as linhas do arquivo em um array
 
     $indice_remover = -1;
     foreach($linhas as $indice => $linha) {
         $dados = explode(";", $linha);
-        if($dados[0] == $pergunta) { // Verifica se a linha contém a pergunta fornecida
+        if($dados[1] == $questaoID) { // Verifica se a linha contém a pergunta fornecida
             $indice_remover = $indice;
             break;
         }
@@ -50,11 +49,11 @@ if(isset($_POST['modificar'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remover Pergunta</title>
+    <title>Remover Pergunta Optativa</title>
 </head>
 <body>
 <header class="caixas">
-    <h1>Remover Pergunta</h1>
+    <h1>Remover Pergunta Optativa</h1>
     <nav>
         <a href="../pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
         <a href="../reportPerg.php"><button class="botaoBonito pagRead">Listar Perguntas</button></a>
@@ -63,8 +62,8 @@ if(isset($_POST['modificar'])) {
 
 <main class="caixas">
     <form action="removePergMultipla.php" method="post">
-        <label for="pergunta">Informe a pergunta a ser removida:</label>
-        <input type="text" id="pergunta" name="pergunta">
+        <label for="questaoID">Informe o ID da pergunta a ser removida:</label>
+        <input type="text" id="questaoID" name="questaoID">
         <br><br>
         <input type="submit" value="Remover pergunta" name="modificar" class="botaoBonito negativo">
     </form>

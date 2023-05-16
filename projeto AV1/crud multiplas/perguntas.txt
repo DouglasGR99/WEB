@@ -1,0 +1,25 @@
+pergunta / resposta; Indice / gabarito
+Qual das afirmativas abaixo está correta?;1
+azul;não
+vermelho;sim
+verde;não
+laranja;não
+roxo;não
+Qual o melhor nome para cães?;2
+;
+;
+;
+;
+;
+Qual afirmativa está correta?;1
+azul;não
+amarelo;não
+roxo;sim
+laranja;não
+verde;não
+Sim?;1
+;
+;
+;
+;
+;

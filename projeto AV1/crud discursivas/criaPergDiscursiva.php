@@ -1,23 +1,23 @@
 <?php
 $pergunta = "";
-$gabNULL = "";
+$questaoID = "";
 $resposta = "";
-$gabarito =  "";
+$gabarito =  "Resposta Correta";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for POST (envio de dados) então faça:
     $pergunta = $_POST["pergunta"];
+    $questaoID = $_POST["questaoID"];
     $resposta = $_POST["resposta"];
-    $gabarito = $_POST["gabarito"];
     $linha1 = "";
 
     if (!file_exists( "perguntas.txt")) { // se o arquivo não existir então faça:
         $arcDisc = fopen( "perguntas.txt",  "a") or die("erro ao criar arquivo");
-        $linha1 = "pergunta;gabNULL\n";
+        $linha1 = "pergunta / resposta; Indice / gabarito\n";
         fwrite($arcDisc, $linha1); // fwrite escreve uma string no arquivo
         fclose($arcDisc);
     }
     $arcDisc = fopen( "perguntas.txt",  "a") or die("erro ao editar arquivo"); // abre o arquivo para adicionar
-    $linha1 = $pergunta . ";" . $gabNULL . "\n"; // cria a linha a ser adicionada
+    $linha1 = $pergunta . ";" . $questaoID . "\n"; // cria a linha a ser adicionada
     $linha2 = $resposta . ";" . $gabarito . "\n";
     fwrite($arcDisc, $linha1);
     fwrite($arcDisc, $linha2);
@@ -46,6 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for 
     <form action="../crud%20multiplas/criaPergMultipla.php" method="POST">
         Pergunta: <label>
             <input type="text" name="pergunta">
+        </label>
+        Índice da pergunta: <label>
+            <input type="text" name="questaoID">
         </label>
         <br>
         Resposta: <label>
