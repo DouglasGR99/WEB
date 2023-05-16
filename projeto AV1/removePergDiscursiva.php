@@ -16,17 +16,14 @@ if(isset($_POST['modificar'])) {
     if($indice_remover !== -1) { // Se a linha for encontrada
         // Remove a linha da pergunta
         unset($linhas[$indice_remover]);
-
         // Remove a linha seguinte (resposta)
-        $i = 1;
-        unset($linhas[$indice_remover + $i]);
-
+        unset($linhas[$indice_remover + 1]);
 
         $arquivo = fopen("perguntas.txt", "w"); // Abre o arquivo em modo de escrita
         fwrite($arquivo, implode("", $linhas)); // Escreve as linhas restantes no arquivo
         fclose($arquivo);
         echo '<script type="text/javascript">
-                alert("Pergunta e respostas removidas com sucesso!");
+                alert("Pergunta e resposta removidas com sucesso!");
               </script>';
     } else {
         echo
@@ -50,11 +47,11 @@ if(isset($_POST['modificar'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remover Pergunta</title>
+    <title>Remover Pergunta Discursiva</title>
 </head>
 <body>
 <header class="caixas">
-    <h1>Remover Pergunta</h1>
+    <h1>Remover Pergunta Discursiva</h1>
     <nav>
         <a href="pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
         <a href="criaPergMultipla.php"><button class="botaoBonito pagCreate">Criar Pergunta</button></a>
