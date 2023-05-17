@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['modificar'])) {
     $questaoID = $_POST['questaoID'];
-    $linhas = file("perguntas.txt"); // Lê todas as linhas do arquivo em um array
+    $linhas = file("../perguntas.txt"); // Lê todas as linhas do arquivo em um array
 
     $indice_remover = -1;
     foreach($linhas as $indice => $linha) {
