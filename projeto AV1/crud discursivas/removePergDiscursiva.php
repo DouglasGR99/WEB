@@ -18,7 +18,7 @@ if(isset($_POST['modificar'])) {
         // Remove a linha seguinte (resposta)
         unset($linhas[$indice_remover + 1]);
 
-        $arquivo = fopen("perguntas.txt", "w"); // Abre o arquivo em modo de escrita
+        $arquivo = fopen("../perguntas.txt", "w"); // Abre o arquivo em modo de escrita
         fwrite($arquivo, implode("", $linhas)); // Escreve as linhas restantes no arquivo
         fclose($arquivo);
         echo '<script type="text/javascript">
@@ -29,9 +29,9 @@ if(isset($_POST['modificar'])) {
         '<script type="text/javascript">
             let text = "Pergunta não encontrada, criar nova pergunta?";
             if (confirm(text) === true) {
-                window.location.href = "criaPergMultipla.php";
+                window.location.href = "criaPergDiscursiva.php";
             } else {
-                window.location.href = "removePergMultipla.php";
+                window.location.href = "removePergDiscursiva.php";
             }
             </script>';
     }

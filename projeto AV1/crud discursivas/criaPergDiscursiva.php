@@ -10,15 +10,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for 
     $resposta = $_POST["resposta"];
     $linha1 = "";
 
-    if (!file_exists( "perguntas.txt")) { // se o arquivo não existir então faça:
-        $arcDisc = fopen( "perguntas.txt",  "a") or die("erro ao criar arquivo");
+    if (!file_exists( "../perguntas.txt")) { // se o arquivo não existir então faça:
+        $arcDisc = fopen( "../perguntas.txt",  "a") or die("erro ao criar arquivo");
         $linha1 = "pergunta / resposta; Indice / gabarito\n";
         fwrite($arcDisc, $linha1); // fwrite escreve uma string no arquivo
         fclose($arcDisc);
     }
-    $arcDisc = fopen( "perguntas.txt",  "a") or die("erro ao editar arquivo"); // abre o arquivo para adicionar
-    $linha1 = $pergunta . ";" . $questaoID . "\n"; // cria a linha a ser adicionada
-    $linha2 = $resposta . ";" . $gabarito . "\n";
+    $arcDisc = fopen( "../perguntas.txt",  "a") or die("erro ao editar arquivo"); // abre o arquivo para adicionar
+    $linha1 = "Pergunta discursiva: " . $pergunta . ";" . $questaoID . "\n"; // cria a linha a ser adicionada
+    $linha2 = "Resposta: " . $resposta . ";" . $gabarito . "\n";
     fwrite($arcDisc, $linha1);
     fwrite($arcDisc, $linha2);
     fclose($arcDisc);
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for 
 </header>
 
 <main class="caixas">
-    <form action="../crud%20multiplas/criaPergMultipla.php" method="POST">
+    <form action="criaPergDiscursiva.php" method="POST">
         Pergunta: <label>
             <input type="text" name="pergunta">
         </label>

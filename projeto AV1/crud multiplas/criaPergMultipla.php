@@ -27,19 +27,19 @@
         $gabarito5 = $_POST["gabarito5"];
         $linha1 = "";
 
-        if (!file_exists( "perguntas.txt")) { // se o arquivo não existir então faça:
-            $arcDisc = fopen( "perguntas.txt",  "a") or die("erro ao criar arquivo");
+        if (!file_exists( "../perguntas.txt")) { // se o arquivo não existir então faça:
+            $arcDisc = fopen( "../perguntas.txt",  "a") or die("erro ao criar arquivo");
             $linha1 = "pergunta / resposta; Indice / gabarito\n";
             fwrite($arcDisc, $linha1); // fwrite escreve uma string no arquivo
             fclose($arcDisc);
         }
-        $arcDisc = fopen( "perguntas.txt",  "a") or die("erro ao editar arquivo"); // abre o arquivo para adicionar
-        $linha1 = $pergunta . ";" . $questaoID . "\n"; // cria a linha a ser adicionada
-        $linha2 = $resposta1 . ";" . $gabarito1 . "\n";
-        $linha3 = $resposta2 . ";" . $gabarito2 . "\n";
-        $linha4 = $resposta3 . ";" . $gabarito3 . "\n";
-        $linha5 = $resposta4 . ";" . $gabarito4 . "\n";
-        $linha6 = $resposta5 . ";" . $gabarito5 . "\n";
+        $arcDisc = fopen( "../perguntas.txt",  "a") or die("erro ao editar arquivo"); // abre o arquivo para adicionar
+        $linha1 = "Pergunta optativa: " . $pergunta . ";" . $questaoID . "\n"; // cria a linha a ser adicionada
+        $linha2 = "(a) " . $resposta1 . ";" . $gabarito1 . "\n";
+        $linha3 = "(b) " . $resposta2 . ";" . $gabarito2 . "\n";
+        $linha4 = "(c) " . $resposta3 . ";" . $gabarito3 . "\n";
+        $linha5 = "(d) " . $resposta4 . ";" . $gabarito4 . "\n";
+        $linha6 = "(e) " . $resposta5 . ";" . $gabarito5 . "\n";
         fwrite($arcDisc, $linha1);
         fwrite($arcDisc, $linha2);
         fwrite($arcDisc, $linha3);

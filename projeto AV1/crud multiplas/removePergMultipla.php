@@ -21,7 +21,7 @@ if(isset($_POST['modificar'])) {
             unset($linhas[$indice_remover + $i]);
         }
 
-        $arquivo = fopen("perguntas.txt", "w"); // Abre o arquivo em modo de escrita
+        $arquivo = fopen("../perguntas.txt", "w"); // Abre o arquivo em modo de escrita
         fwrite($arquivo, implode("", $linhas)); // Escreve as linhas restantes no arquivo
         fclose($arquivo);
         echo '<script type="text/javascript">
