@@ -1,54 +1,49 @@
 <?php
-    $pergunta = "";
-    $questaoID = "";
-    $resposta1 = "";
-    $gabarito1 =  "";
-    $resposta2 = "";
-    $gabarito2 =  "";
-    $resposta3 = "";
-    $gabarito3 =  "";
-    $resposta4 = "";
-    $gabarito4 =  "";
-    $resposta5 = "";
-    $gabarito5 =  "";
+$pergunta = "";
+$questaoID = "";
+$dados = array();
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for POST (envio de dados) então faça:
-        $pergunta = $_POST["pergunta"];
-        $questaoID = $_POST["questaoID"];
-        $resposta1 = $_POST["resposta1"];
-        $gabarito1 = $_POST["gabarito1"];
-        $resposta2 = $_POST["resposta2"];
-        $gabarito2 = $_POST["gabarito2"];
-        $resposta3 = $_POST["resposta3"];
-        $gabarito3 = $_POST["gabarito3"];
-        $resposta4 = $_POST["resposta4"];
-        $gabarito4 = $_POST["gabarito4"];
-        $resposta5 = $_POST["resposta5"];
-        $gabarito5 = $_POST["gabarito5"];
-        $linha1 = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $pergunta = $_POST["pergunta"];
+    $questaoID = $_POST["questaoID"];
 
-        if (!file_exists( "../perguntas.txt")) { // se o arquivo não existir então faça:
-            $arcDisc = fopen( "../perguntas.txt",  "a") or die("erro ao criar arquivo");
-            $linha1 = "pergunta / resposta; Indice / gabarito\n";
-            fwrite($arcDisc, $linha1); // fwrite escreve uma string no arquivo
-            fclose($arcDisc);
-        }
-        $arcDisc = fopen( "../perguntas.txt",  "a") or die("erro ao editar arquivo"); // abre o arquivo para adicionar
-        $linha1 = "Pergunta optativa: " . $pergunta . ";" . $questaoID . "\n"; // cria a linha a ser adicionada
-        $linha2 = "(a) " . $resposta1 . ";" . $gabarito1 . "\n";
-        $linha3 = "(b) " . $resposta2 . ";" . $gabarito2 . "\n";
-        $linha4 = "(c) " . $resposta3 . ";" . $gabarito3 . "\n";
-        $linha5 = "(d) " . $resposta4 . ";" . $gabarito4 . "\n";
-        $linha6 = "(e) " . $resposta5 . ";" . $gabarito5 . "\n";
+    $respostas = array(
+        $_POST["resposta1"],
+        $_POST["resposta2"],
+        $_POST["resposta3"],
+        $_POST["resposta4"],
+        $_POST["resposta5"]
+    );
+
+    $gabaritos = array(
+        $_POST["gabarito1"],
+        $_POST["gabarito2"],
+        $_POST["gabarito3"],
+        $_POST["gabarito4"],
+        $_POST["gabarito5"]
+    );
+
+    if (!file_exists("../perguntas.txt")) {
+        $arcDisc = fopen("../perguntas.txt", "a") or die("erro ao criar arquivo");
+        $linha1 = "pergunta / resposta; Indice / gabarito\n";
         fwrite($arcDisc, $linha1);
-        fwrite($arcDisc, $linha2);
-        fwrite($arcDisc, $linha3);
-        fwrite($arcDisc, $linha4);
-        fwrite($arcDisc, $linha5);
-        fwrite($arcDisc, $linha6);
         fclose($arcDisc);
     }
+
+    $arcDisc = fopen("../perguntas.txt", "a") or die("erro ao editar arquivo");
+
+    $linha1 = "Pergunta optativa: " . $pergunta . ";" . $questaoID . "\n";
+    fwrite($arcDisc, $linha1);
+
+    for ($i = 0; $i < count($respostas); $i++) {
+        $linha = "(" . chr(97 + $i) . ") " . $respostas[$i] . ";" . $gabaritos[$i] . "\n";
+        fwrite($arcDisc, $linha);
+    }
+
+    fclose($arcDisc);
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

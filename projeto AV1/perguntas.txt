@@ -1,17 +1,23 @@
 pergunta / resposta; Indice / gabarito
-Pergunta: abcd;11
+Pergunta optativa: abcd;11
 (a) aaa;v
 (b) bbb;f
 (c) ccc;v
 (d) ddd;v
 (e) eee;f
-Pergunta: numeros;2
+Pergunta optativa: numeros;2
 (a) 111;v
 (b) 222;f
 (c) 333;f
 (d) 444;f
 (e) 555;f
-Pergunta: Esta pergunta tem resposta?;3
+Pergunta discursiva: Esta pergunta tem resposta?;3
 Resposta: sim;Resposta Correta
-Pergunta: a resposta da pergunta anterior é não?;4
+Pergunta discursiva: a resposta da pergunta anterior é não?;4
 Resposta: não;Resposta Correta
+Pergunta optativa: Sorvete?;6
+(a) creme;sim
+(b) baunilha;sim
+(c) cebola;não
+(d) chocolate;sim
+(e) martelo;não
