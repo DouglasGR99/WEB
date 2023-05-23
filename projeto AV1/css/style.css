@@ -27,6 +27,15 @@ body {
     justify-content: center;
   }
 
+  /* Mensagem de aviso */
+    .aviso {
+        background-color: #b03f3b;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        font-size: 16px;
+    }
+
 /* Formulários */
 form {
   display: flex;
