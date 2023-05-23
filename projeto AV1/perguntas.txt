@@ -13,8 +13,8 @@ Pergunta optativa: Qual dos numeros abaixo é maior do que 6?;2
 (e) -10;não
 Pergunta discursiva: Esta pergunta tem resposta?;3
 Resposta: sim;Resposta Correta
-Pergunta discursiva: a resposta da pergunta anterior é não?;4
-Resposta: não;Resposta Correta
+Pergunta discursiva: Porque patos põe ovos?;4
+Resposta: Pois são aves.;Resposta Correta
 Pergunta optativa: Sorvete?;6
 (a) creme;sim
 (b) baunilha;sim

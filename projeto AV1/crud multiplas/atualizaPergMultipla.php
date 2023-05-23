@@ -55,7 +55,7 @@ if(isset($_POST['buscarPERG'])) {
 
 <main class="caixas">
     <form action="atualizaPergMultipla.php" method="post">
-        <label for="questaoID">Informe o ID da pergunta a ser atualizada:</label>
+        <label for="questaoID">Informe o ID da pergunta optativa a ser atualizada:</label>
         <input type="text" id="questaoID" name="questaoID">
         <br><br>
         <input type="submit" value="Buscar" name="buscarPERG" class="botaoBonito pagUpdate">

@@ -1,36 +1,36 @@
 <?php
 session_start();
 if(isset($_POST['buscarPERG'])) {
-    $pergunta = $_POST['matricula']; // Informação fornecida pelo usuário para identificar a linha a ser removida
+    $pergunta = $_POST['questaoID']; // Informação fornecida pelo usuário para identificar a linha a ser removida
 
-    $linhas = file("perguntas.txt");
+    $linhas = file("../perguntas.txt");
 
     $indice_buscar = -1;
     foreach($linhas as $indice => $linha) {
         $dados = explode(";", $linha);
-        if($dados[0] == $pergunta) { // Verifica se a linha contém a Pergunta fornecida
+        if($dados[1] == $pergunta) { // Verifica se a linha contém a Pergunta fornecida
             $indice_buscar = $indice; // Guarda o índice da Pergunta a ser atualizada
             break;
         }
     }
     $perguntaSelec = $pergunta;
-    $_SESSION["pergunta"] = $perguntaSelec;
+    $_SESSION["questaoID"] = $perguntaSelec;
 
     if($indice_buscar !== -1) { // Se a linha for encontrada
         echo '<script type="text/javascript">
             let text = "Pergunta encontrada! atualizar Pergunta?";
             if (confirm(text) === true) { 
-                window.location.href = "pergMultAtualizada.php"; 
+                window.location.href = "pergDiscAtualizada.php"; 
             } else { 
-                window.location.href = "atualizaPergMultipla.php"; 
+                window.location.href = "atualizaPergDiscursiva.php"; 
             } </script>';
     } else {
         echo '<script type="text/javascript">
             let text = "Pergunta não encontrada, criar nova Pergunta?";
             if (confirm(text) === true) {
-                window.location.href = "criaPergMultipla.php";
+                window.location.href = "criaPergDiscursiva.php";
             } else {
-                window.location.href = "atualizaPergMultipla.php"; } </script>';
+                window.location.href = "atualizaPergDiscursiva.php"; } </script>';
     }
 }
 ?>
@@ -55,8 +55,8 @@ if(isset($_POST['buscarPERG'])) {
 
 <main class="caixas">
     <form action="atualizaPergDiscursiva.php" method="post">
-        <label for="pergunta">Informe a pergunta a ser atualizada:</label>
-        <input type="text" id="pergunta" name="pergunta">
+        <label for="questaoID">Informe o ID da pergunta discursiva a ser atualizada:</label>
+        <input type="text" id="questaoID" name="questaoID">
         <br><br>
         <input type="submit" value="Buscar" name="buscarPERG" class="botaoBonito pagUpdate">
     </form>
