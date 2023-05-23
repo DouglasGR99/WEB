@@ -20,17 +20,17 @@ if(isset($_POST['buscarPERG'])) {
         echo '<script type="text/javascript">
             let text = "Pergunta encontrada! atualizar Pergunta?";
             if (confirm(text) === true) { 
-                window.location.href = "pergMultAtualizada.php"; 
+                window.location.href = "pergDISCatualizada.php"; 
             } else { 
-                window.location.href = "atualizaPergMultipla.php"; 
+                window.location.href = "atualizaPergDISC.php"; 
             } </script>';
     } else {
         echo '<script type="text/javascript">
             let text = "Pergunta não encontrada, criar nova Pergunta?";
             if (confirm(text) === true) {
-                window.location.href = "criaPergMultipla.php";
+                window.location.href = "criaPergDISC.php";
             } else {
-                window.location.href = "atualizaPergMultipla.php"; } </script>';
+                window.location.href = "atualizaPergDISC.php"; } </script>';
     }
 }
 ?>
@@ -42,11 +42,11 @@ if(isset($_POST['buscarPERG'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atualizar Pergunta Optativa php</title>
+    <title>Atualizar Pergunta Discursiva php</title>
 </head>
 <body>
 <header class="caixas">
-    <h1>Atualizar Pergunta Optativa</h1>
+    <h1>Atualizar Pergunta Discursiva</h1>
     <nav>
         <a href="../pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
         <a href="../reportPerg.php"><button class="botaoBonito pagRead">Listar Perguntas</button></a>
@@ -54,8 +54,8 @@ if(isset($_POST['buscarPERG'])) {
 </header>
 
 <main class="caixas">
-    <form action="atualizaPergMultipla.php" method="post">
-        <label for="questaoID">Informe o ID da pergunta optativa a ser atualizada:</label>
+    <form action="atualizaPergDISC.php" method="post">
+        <label for="questaoID">Informe o ID da pergunta discursiva a ser atualizada:</label>
         <input type="text" id="questaoID" name="questaoID">
         <br><br>
         <input type="submit" value="Buscar" name="buscarPERG" class="botaoBonito pagUpdate">

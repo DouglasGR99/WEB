@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for 
 </header>
 
 <main class="caixas">
-    <form action="pergDiscAtualizada.php" method="POST">
+    <form action="pergDISCatualizada.php" method="POST">
         Nova Pergunta: <label>
             <input type="text" name="pergunta">
         </label>

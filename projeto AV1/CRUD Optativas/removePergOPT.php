@@ -32,9 +32,9 @@ if(isset($_POST['modificar'])) {
         '<script type="text/javascript">
             let text = "Pergunta não encontrada, criar nova pergunta?";
             if (confirm(text) === true) {
-                window.location.href = "criaPergMultipla.php";
+                window.location.href = "criaPergOPT.php";
             } else {
-                window.location.href = "removePergMultipla.php";
+                window.location.href = "removePergOPT.php";
             }
             </script>';
     }
@@ -61,7 +61,7 @@ if(isset($_POST['modificar'])) {
 </header>
 
 <main class="caixas">
-    <form action="removePergMultipla.php" method="post">
+    <form action="removePergOPT.php" method="post">
         <label for="questaoID">Informe o ID da pergunta a ser removida:</label>
         <input type="text" id="questaoID" name="questaoID">
         <br><br>

@@ -20,17 +20,17 @@ if(isset($_POST['buscarPERG'])) {
         echo '<script type="text/javascript">
             let text = "Pergunta encontrada! atualizar Pergunta?";
             if (confirm(text) === true) { 
-                window.location.href = "pergDiscAtualizada.php"; 
+                window.location.href = "pergOPTatualizada.php"; 
             } else { 
-                window.location.href = "atualizaPergDiscursiva.php"; 
+                window.location.href = "atualizaPergOPT.php"; 
             } </script>';
     } else {
         echo '<script type="text/javascript">
             let text = "Pergunta não encontrada, criar nova Pergunta?";
             if (confirm(text) === true) {
-                window.location.href = "criaPergDiscursiva.php";
+                window.location.href = "criaPergOPT.php";
             } else {
-                window.location.href = "atualizaPergDiscursiva.php"; } </script>';
+                window.location.href = "atualizaPergOPT.php"; } </script>';
     }
 }
 ?>
@@ -42,11 +42,11 @@ if(isset($_POST['buscarPERG'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atualizar Pergunta Discursiva php</title>
+    <title>Atualizar Pergunta Optativa php</title>
 </head>
 <body>
 <header class="caixas">
-    <h1>Atualizar Pergunta Discursiva</h1>
+    <h1>Atualizar Pergunta Optativa</h1>
     <nav>
         <a href="../pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
         <a href="../reportPerg.php"><button class="botaoBonito pagRead">Listar Perguntas</button></a>
@@ -54,8 +54,8 @@ if(isset($_POST['buscarPERG'])) {
 </header>
 
 <main class="caixas">
-    <form action="atualizaPergDiscursiva.php" method="post">
-        <label for="questaoID">Informe o ID da pergunta discursiva a ser atualizada:</label>
+    <form action="atualizaPergOPT.php" method="post">
+        <label for="questaoID">Informe o ID da pergunta optativa a ser atualizada:</label>
         <input type="text" id="questaoID" name="questaoID">
         <br><br>
         <input type="submit" value="Buscar" name="buscarPERG" class="botaoBonito pagUpdate">
