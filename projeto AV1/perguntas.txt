@@ -5,12 +5,12 @@ Pergunta optativa: abcd;11
 (c) ccc;v
 (d) ddd;v
 (e) eee;f
-Pergunta optativa: numeros;2
-(a) 111;v
-(b) 222;f
-(c) 333;f
-(d) 444;f
-(e) 555;f
+Pergunta optativa: Qual dos numeros abaixo é maior do que 6?;2
+(a) 5;não
+(b) 7;sim
+(c) 1;não
+(d) 0;não
+(e) -10;não
 Pergunta discursiva: Esta pergunta tem resposta?;3
 Resposta: sim;Resposta Correta
 Pergunta discursiva: a resposta da pergunta anterior é não?;4
