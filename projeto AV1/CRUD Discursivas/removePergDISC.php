@@ -1,26 +1,23 @@
 <?php
 if(isset($_POST['modificar'])) {
     $questaoID = $_POST['questaoID'];
-    $linhas = file("../perguntas.txt"); // Lê todas as linhas do arquivo em um array
+    $perguntas = json_decode(file_get_contents("../perguntas.json"), true); // Lê o conteúdo do arquivo JSON e decodifica em um array associativo
 
     $indice_remover = -1;
-    foreach($linhas as $indice => $linha) {
-        $dados = explode(";", $linha);
-        if($dados[1] == $questaoID) { // Verifica se a linha contém a pergunta fornecida
+    foreach($perguntas as $indice => $pergunta) {
+        if($pergunta['questaoID'] == $questaoID) { // Verifica se a pergunta tem o ID fornecido
             $indice_remover = $indice;
             break;
         }
     }
 
-    if($indice_remover !== -1) { // Se a linha for encontrada
-        // Remove a linha da pergunta
-        unset($linhas[$indice_remover]);
-        // Remove a linha seguinte (resposta)
-        unset($linhas[$indice_remover + 1]);
+    if($indice_remover !== -1) { // Se a pergunta for encontrada
+        // Remove a pergunta do array
+        array_splice($perguntas, $indice_remover, 1);
 
-        $arquivo = fopen("../perguntas.txt", "w"); // Abre o arquivo em modo de escrita
-        fwrite($arquivo, implode("", $linhas)); // Escreve as linhas restantes no arquivo
-        fclose($arquivo);
+        // Salva o array atualizado no arquivo JSON
+        file_put_contents("../perguntas.json", json_encode($perguntas));
+
         echo '<script type="text/javascript">
                 alert("Pergunta e resposta removidas com sucesso!");
               </script>';

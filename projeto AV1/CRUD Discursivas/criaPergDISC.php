@@ -4,26 +4,37 @@ $questaoID = "";
 $resposta = "";
 $gabarito =  "Resposta Correta";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for POST (envio de dados) então faça:
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pergunta = $_POST["pergunta"];
     $questaoID = $_POST["questaoID"];
     $resposta = $_POST["resposta"];
-    $linha1 = "";
 
-    if (!file_exists( "../perguntas.txt")) { // se o arquivo não existir então faça:
-        $arcDisc = fopen( "../perguntas.txt",  "a") or die("erro ao criar arquivo");
-        $linha1 = "pergunta / resposta; Indice / gabarito\n";
-        fwrite($arcDisc, $linha1); // fwrite escreve uma string no arquivo
-        fclose($arcDisc);
+    $perguntas = array(); // Array para armazenar as perguntas existentes
+
+    // Verifica se o arquivo JSON já existe
+    if (file_exists("../perguntas.json")) {
+        $perguntas = json_decode(file_get_contents("../perguntas.json"), true);
     }
-    $arcDisc = fopen( "../perguntas.txt",  "a") or die("erro ao editar arquivo"); // abre o arquivo para adicionar
-    $linha1 = "Pergunta discursiva: " . $pergunta . ";" . $questaoID . "\n"; // cria a linha a ser adicionada
-    $linha2 = "Resposta: " . $resposta . ";" . $gabarito . "\n";
-    fwrite($arcDisc, $linha1);
-    fwrite($arcDisc, $linha2);
-    fclose($arcDisc);
+
+    $novaPergunta = array(
+        "pergunta" => $pergunta,
+        "questaoID" => $questaoID,
+        "resposta" => $resposta,
+        "gabarito" => $gabarito
+    );
+
+    // Adiciona a nova pergunta ao array de perguntas
+    $perguntas[] = $novaPergunta;
+
+    // Salva o array de perguntas no arquivo JSON
+    file_put_contents("../perguntas.json", json_encode($perguntas));
+
+    // Redireciona para a página de listagem de perguntas
+    header("Location: ../reportPerg.php");
+    exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

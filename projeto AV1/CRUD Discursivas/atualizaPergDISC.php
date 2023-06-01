@@ -1,24 +1,23 @@
 <?php
 session_start();
 if(isset($_POST['buscarPERG'])) {
-    $pergunta = $_POST['questaoID']; // Informação fornecida pelo usuário para identificar a linha a ser removida
+    $pergunta = $_POST['questaoID']; // Informação fornecida pelo usuário para identificar a pergunta a ser buscada
 
-    $linhas = file("../perguntas.txt");
+    $perguntas = json_decode(file_get_contents("../perguntas.json"), true); // Lê o conteúdo do arquivo JSON e decodifica em um array associativo
 
-    $indice_buscar = -1;
-    foreach($linhas as $indice => $linha) {
-        $dados = explode(";", $linha);
-        if($dados[1] == $pergunta) { // Verifica se a linha contém a Pergunta fornecida
-            $indice_buscar = $indice; // Guarda o índice da Pergunta a ser atualizada
+    $perguntaEncontrada = null;
+    foreach($perguntas as $indice => $perguntaArray) {
+        if($perguntaArray['questaoID'] == $pergunta) { // Verifica se a pergunta tem o ID fornecido
+            $perguntaEncontrada = $perguntaArray;
             break;
         }
     }
-    $perguntaSelec = $pergunta;
-    $_SESSION["questaoID"] = $perguntaSelec;
 
-    if($indice_buscar !== -1) { // Se a linha for encontrada
+    if($perguntaEncontrada !== null) { // Se a pergunta for encontrada
+        $_SESSION["questaoID"] = $perguntaEncontrada;
+
         echo '<script type="text/javascript">
-            let text = "Pergunta encontrada! atualizar Pergunta?";
+            let text = "Pergunta encontrada! Atualizar pergunta?";
             if (confirm(text) === true) { 
                 window.location.href = "pergDISCatualizada.php"; 
             } else { 
@@ -26,14 +25,16 @@ if(isset($_POST['buscarPERG'])) {
             } </script>';
     } else {
         echo '<script type="text/javascript">
-            let text = "Pergunta não encontrada, criar nova Pergunta?";
+            let text = "Pergunta não encontrada, criar nova pergunta?";
             if (confirm(text) === true) {
                 window.location.href = "criaPergDISC.php";
             } else {
-                window.location.href = "atualizaPergDISC.php"; } </script>';
+                window.location.href = "atualizaPergDISC.php";
+            } </script>';
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -42,7 +43,7 @@ if(isset($_POST['buscarPERG'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atualizar Pergunta Discursiva php</title>
+    <title>Atualizar Pergunta Discursiva</title>
 </head>
 <body>
 <header class="caixas">
