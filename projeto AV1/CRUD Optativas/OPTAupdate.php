@@ -20,17 +20,17 @@ if(isset($_POST['buscarPERG'])) {
         echo '<script type="text/javascript">
             let text = "Pergunta encontrada! atualizar Pergunta?";
             if (confirm(text) === true) { 
-                window.location.href = "pergOPTatualizada.php"; 
+                window.location.href = "OPTAindex.php"; 
             } else { 
-                window.location.href = "atualizaPergOPT.php"; 
+                window.location.href = "OPTAupdate.php"; 
             } </script>';
     } else {
         echo '<script type="text/javascript">
             let text = "Pergunta não encontrada, criar nova Pergunta?";
             if (confirm(text) === true) {
-                window.location.href = "criaPergOPT.php";
+                window.location.href = "OPTAcreate.php";
             } else {
-                window.location.href = "atualizaPergOPT.php"; } </script>';
+                window.location.href = "OPTAupdate.php"; } </script>';
     }
 }
 ?>
@@ -54,7 +54,7 @@ if(isset($_POST['buscarPERG'])) {
 </header>
 
 <main class="caixas">
-    <form action="atualizaPergOPT.php" method="post">
+    <form action="OPTAupdate.php" method="post">
         <label for="questaoID">Informe o ID da pergunta optativa a ser atualizada:</label>
         <input type="text" id="questaoID" name="questaoID">
         <br><br>

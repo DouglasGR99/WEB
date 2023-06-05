@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </header>
 
 <main class="caixas">
-    <form action="criaPergOPT.php" method="POST">
+    <form action="OPTAcreate.php" method="POST">
         Pergunta: <label>
             <input type="text" name="pergunta">
         </label>

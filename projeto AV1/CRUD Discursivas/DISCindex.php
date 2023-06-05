@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for 
     $dados = json_decode($jsonString, true);
 
     // lê o conteúdo do arquivo JSON e decodifica em um array associativo
-/*    $perguntas = json_decode(file_get_contents("../perguntas.json"), true);*/
+    $perguntas = json_decode(file_get_contents("../perguntas.json"), true);
 
     /*$indice_atualizar = -1; // variável para armazenar o índice da pergunta a ser atualizada
 
@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for 
     foreach ($dados as &$pergunta) {
         if ($pergunta['questaoID'] == $questaoID) {
             // Modifica os atributos desejados
-            $pergunta['pergunta'] = $pergunta; // Atualiza a pergunta
-            $pergunta['resposta'] = $resposta; // Atualiza a resposta
+            $pergunta['pergunta'] = "4321"; // Atualiza a pergunta
+            $pergunta['resposta'] = "1234"; // Atualiza a resposta
 
             break; // Interrompe o loop assim que encontrar a pergunta
         }
@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for 
 </header>
 
 <main class="caixas">
-    <form action="pergDISCatualizada.php" method="POST">
+    <form action="DISCindex.php" method="POST">
         Nova Pergunta: <label>
             <input type="text" name="pergunta">
         </label>

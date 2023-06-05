@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $perguntas = json_decode(file_get_contents("../perguntas.json"), true);
     }
 
-    $novaPergunta = array(
+    $novaQuestao = array(
         "pergunta" => $pergunta,
         "questaoID" => $questaoID,
         "resposta" => $resposta,
@@ -24,13 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     // Adiciona a nova pergunta ao array de perguntas
-    $perguntas[] = $novaPergunta;
+    $perguntas[] = $novaQuestao;
 
     // Salva o array de perguntas no arquivo JSON
     file_put_contents("../perguntas.json", json_encode($perguntas));
 
     // Redireciona para a página de listagem de perguntas
-    header("Location: ../reportPerg.php");
+    header("Location: ../pagInicial.html");
     exit();
 }
 ?>
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </header>
 
 <main class="caixas">
-    <form action="criaPergDISC.php" method="POST">
+    <form action="DISCcreate.php" method="POST">
         Pergunta: <label>
             <input type="text" name="pergunta">
         </label>

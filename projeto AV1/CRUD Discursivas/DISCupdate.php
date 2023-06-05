@@ -19,17 +19,17 @@ if(isset($_POST['buscarPERG'])) {
         echo '<script type="text/javascript">
             let text = "Pergunta encontrada! Atualizar pergunta?";
             if (confirm(text) === true) { 
-                window.location.href = "pergDISCatualizada.php"; 
+                window.location.href = "DISCindex.php"; 
             } else { 
-                window.location.href = "atualizaPergDISC.php"; 
+                window.location.href = "DISCupdate.php"; 
             } </script>';
     } else {
         echo '<script type="text/javascript">
             let text = "Pergunta não encontrada, criar nova pergunta?";
             if (confirm(text) === true) {
-                window.location.href = "criaPergDISC.php";
+                window.location.href = "DISCcreate.php";
             } else {
-                window.location.href = "atualizaPergDISC.php";
+                window.location.href = "DISCupdate.php";
             } </script>';
     }
 }
@@ -55,7 +55,7 @@ if(isset($_POST['buscarPERG'])) {
 </header>
 
 <main class="caixas">
-    <form action="atualizaPergDISC.php" method="post">
+    <form action="DISCupdate.php" method="post">
         <label for="questaoID">Informe o ID da pergunta discursiva a ser atualizada:</label>
         <input type="text" id="questaoID" name="questaoID">
         <br><br>

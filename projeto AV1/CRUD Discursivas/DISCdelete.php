@@ -1,40 +1,34 @@
 <?php
 if(isset($_POST['modificar'])) {
     $questaoID = $_POST['questaoID'];
-    $linhas = file("../perguntas.txt"); // Lê todas as linhas do arquivo em um array
+    $perguntas = json_decode(file_get_contents("../perguntas.json"), true); // Lê o conteúdo do arquivo JSON e decodifica em um array associativo
 
     $indice_remover = -1;
-    foreach($linhas as $indice => $linha) {
-        $dados = explode(";", $linha);
-        if($dados[1] == $questaoID) { // Verifica se a linha contém a pergunta fornecida
+    foreach($perguntas as $indice => $pergunta) {
+        if($pergunta['questaoID'] == $questaoID) { // Verifica se a pergunta tem o ID fornecido
             $indice_remover = $indice;
             break;
         }
     }
 
-    if($indice_remover !== -1) { // Se a linha for encontrada
-        // Remove a linha da pergunta
-        unset($linhas[$indice_remover]);
+    if($indice_remover !== -1) { // Se a pergunta for encontrada
+        // Remove a pergunta do array
+        array_splice($perguntas, $indice_remover, 1);
 
-        // Remove as 5 linhas seguintes (respostas)
-        for ($i = 1; $i <= 5; $i++) {
-            unset($linhas[$indice_remover + $i]);
-        }
+        // Salva o array atualizado no arquivo JSON
+        file_put_contents("../perguntas.json", json_encode($perguntas));
 
-        $arquivo = fopen("../perguntas.txt", "w"); // Abre o arquivo em modo de escrita
-        fwrite($arquivo, implode("", $linhas)); // Escreve as linhas restantes no arquivo
-        fclose($arquivo);
         echo '<script type="text/javascript">
-                alert("Pergunta e respostas removidas com sucesso!");
+                alert("Pergunta e resposta removidas com sucesso!");
               </script>';
     } else {
         echo
         '<script type="text/javascript">
             let text = "Pergunta não encontrada, criar nova pergunta?";
             if (confirm(text) === true) {
-                window.location.href = "criaPergOPT.php";
+                window.location.href = "DISCcreate.php";
             } else {
-                window.location.href = "removePergOPT.php";
+                window.location.href = "DISCdelete.php";
             }
             </script>';
     }
@@ -49,11 +43,11 @@ if(isset($_POST['modificar'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remover Pergunta Optativa</title>
+    <title>Remover Pergunta Discursiva</title>
 </head>
 <body>
 <header class="caixas">
-    <h1>Remover Pergunta Optativa</h1>
+    <h1>Remover Pergunta Discursiva</h1>
     <nav>
         <a href="../pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
         <a href="../reportPerg.php"><button class="botaoBonito pagRead">Listar Perguntas</button></a>
@@ -61,7 +55,7 @@ if(isset($_POST['modificar'])) {
 </header>
 
 <main class="caixas">
-    <form action="removePergOPT.php" method="post">
+    <form action="DISCdelete.php" method="post">
         <label for="questaoID">Informe o ID da pergunta a ser removida:</label>
         <input type="text" id="questaoID" name="questaoID">
         <br><br>
