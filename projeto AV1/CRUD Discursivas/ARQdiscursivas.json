@@ -1,27 +1,22 @@
-{
-    "0": {
+[
+    {
         "id": 1,
         "pergunta": "Qual o nome do seu primeiro animal de estima\u00e7\u00e3o?",
         "resposta": "Rex"
     },
-    "1": {
+    {
         "id": 2,
         "pergunta": "Qual o nome da sua primeira escola?",
         "resposta": "Escola Estadual de Ensino Fundamental Professora Maria de Lourdes"
     },
-    "2": {
+    {
         "id": 3,
         "pergunta": "Qual o nome do seu melhor amigo de inf\u00e2ncia?",
         "resposta": "Jo\u00e3o"
     },
-    "3": {
-        "id": 4,
+    {
         "pergunta": "Boa tarde",
+        "id": "8",
         "resposta": "oi"
-    },
-    "4": {
-        "id": 5,
-        "pergunta": "Porque patos p\u00f5e ovos?",
-        "resposta": "Pois s\u00e3o aves."
     }
-}
+]

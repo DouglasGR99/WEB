@@ -1,14 +1,14 @@
 <?php
 session_start();
 if(isset($_POST['buscarPERG'])) {
-    $pergunta = $_POST['questaoID']; // Informação fornecida pelo usuário para identificar a dado a ser removida
+    $pergunta = $_POST['questaoID']; // Informação fornecida pelo usuário para identificar a linha a ser removida
 
     $linhas = file("../perguntas.txt");
 
     $indice_buscar = -1;
     foreach($linhas as $indice => $linha) {
         $dados = explode(";", $linha);
-        if($dados[1] == $pergunta) { // Verifica se a dado contém a Pergunta fornecida
+        if($dados[1] == $pergunta) { // Verifica se a linha contém a Pergunta fornecida
             $indice_buscar = $indice; // Guarda o índice da Pergunta a ser atualizada
             break;
         }
@@ -16,7 +16,7 @@ if(isset($_POST['buscarPERG'])) {
     $perguntaSelec = $pergunta;
     $_SESSION["questaoID"] = $perguntaSelec;
 
-    if($indice_buscar !== -1) { // Se a dado for encontrada
+    if($indice_buscar !== -1) { // Se a linha for encontrada
         echo '<script type="text/javascript">
             let text = "Pergunta encontrada! atualizar Pergunta?";
             if (confirm(text) === true) { 

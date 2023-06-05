@@ -1,3 +1,41 @@
+<?php
+session_start();
+if(isset($_POST['buscarPERG'])) {
+    $pergunta = $_POST['questaoID']; // Informação fornecida pelo usuário para identificar a pergunta a ser buscada
+
+    $perguntas = json_decode(file_get_contents("../perguntas.json"), true); // Lê o conteúdo do arquivo JSON e decodifica em um array associativo
+
+    $perguntaEncontrada = null;
+    foreach($perguntas as $indice => $perguntaArray) {
+        if($perguntaArray['questaoID'] == $pergunta) { // Verifica se a pergunta tem o ID fornecido
+            $perguntaEncontrada = $perguntaArray;
+            break;
+        }
+    }
+
+    if($perguntaEncontrada !== null) { // Se a pergunta for encontrada
+        $_SESSION["questaoID"] = $perguntaEncontrada;
+
+        echo '<script type="text/javascript">
+            let text = "Pergunta encontrada! Atualizar pergunta?";
+            if (confirm(text) === true) { 
+                window.location.href = "DISCindex.php"; 
+            } else { 
+                window.location.href = "DISCupdate.php"; 
+            } </script>';
+    } else {
+        echo '<script type="text/javascript">
+            let text = "Pergunta não encontrada, criar nova pergunta?";
+            if (confirm(text) === true) {
+                window.location.href = "DISCcreate.php";
+            } else {
+                window.location.href = "DISCupdate.php";
+            } </script>';
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,47 +46,20 @@
     <title>Atualizar Pergunta Discursiva</title>
 </head>
 <body>
-<?php
-    // Coleta o id da URL
-    $indice = $_GET['indice'];
-
-    // Coleta o conteúdo do arquivo JSON
-    $dados = file_get_contents('ARQdiscursivas.json');
-    $dados = json_decode($dados);
-
-    // Atribui os dados para o indice selecionado
-    $dado = $dados[$indice];
-
-    // Verifica se o formulário foi enviado
-    if (isset($_POST['salvar'])) {
-        $input = array(
-            'id' => $_POST['id'],
-            'pergunta' => $_POST['pergunta'],
-            'resposta' => $_POST['resposta']
-        );
-
-        // Atualiza os dados do indice selecionado
-        $dados[$indice] = $input;
-
-        // Codifica os dados para formato JSON
-        $dados = json_encode($dados, JSON_PRETTY_PRINT);
-        file_put_contents('ARQdiscursivas.json', $dados);
-
-        header('location: DISCindex.php');
-    }
-?>
-<main class="caixas">
-    <h1>Atualizar Pergunta Discursiva (PHP JSON)</h1>
+<header class="caixas">
+    <h1>Atualizar Pergunta Discursiva</h1>
     <nav>
-        <a href="DISCindex.php"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
-    </nav><br>
+        <a href="../pagInicial.html"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
+        <a href="../reportPerg.php"><button class="botaoBonito pagRead">Listar Perguntas</button></a>
+    </nav>
+</header>
 
+<main class="caixas">
     <form action="DISCupdate.php" method="post">
-        Índice: <label> <input type="text" id="id" name="id" value="<?php echo $dado->id; ?>"> </label>
-        Pergunta: <label> <input type="text" id="pergunta" name="pergunta" value="<?php echo $dado->pergunta; ?>"> </label>
-        Resposta: <label> <input type="text" id="resposta" name="resposta" value="<?php echo $dado->resposta; ?>"> </label>
+        <label for="questaoID">Informe o ID da pergunta discursiva a ser atualizada:</label>
+        <input type="text" id="questaoID" name="questaoID">
         <br><br>
-        <input type="submit" name="salvar" value="Salvar" class="botaoBonito pagUpdate">
+        <input type="submit" value="Buscar" name="buscarPERG" class="botaoBonito pagUpdate">
     </form>
 </main>
 </body>

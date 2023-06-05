@@ -9,41 +9,51 @@
 </head>
 <body>
 <main class="caixas">
-    <h1>Criar Pergunta Discursiva (PHP JSON)</h1>
+    <h1>Criar Pergunta Discursiva</h1>
     <nav>
         <a href="DISCindex.php"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
-    </nav><br>
-
+    </nav>
+    <br>
     <form action="DISCcreate.php" method="POST">
-        Índice: <label> <input type="text" id="id" name="id"> </label>
-        Pergunta: <label> <input type="text" id="pergunta" name="pergunta"> </label>
-        Resposta: <label> <input type="text" id="resposta" name="resposta"> </label>
-        <br><br>
+        Pergunta: <label>
+            <input type="text" id="pergunta" name="pergunta">
+        </label>
+        Índice da pergunta: <label>
+            <input type="text" id="id" name="id">
+        </label>
+        <br>
+        Resposta: <label>
+            <input type="text" id="resposta" name="resposta">
+        </label>
         <input type="submit" name="salvar" value="Criar Questão" class="botaoBonito botaoArquivo">
     </form>
 </main>
 
 <?php
     if (isset($_POST['salvar'])) {
-        // Abre o arquivo perguntas.json
+        // abre o arquivo perguntas.json
         $dados = file_get_contents('ARQdiscursivas.json');
         $dados = json_decode($dados);
 
-        // Dados do formulário
+        // dados do formulário
         $novaQuestao = array(
-            'id' => $_POST['id'],
             'pergunta' => $_POST['pergunta'],
+            'id' => $_POST['id'],
             'resposta' => $_POST['resposta']
         );
 
-        // Adiciona os dados do formulário no array
+        // adiciona os dados do formulário no array
         $dados[] = $novaQuestao;
 
-        // Salva os dados no arquivo perguntas.json
+        // salva os dados no arquivo perguntas.json
         $dados = json_encode($dados, JSON_PRETTY_PRINT);
         file_put_contents('ARQdiscursivas.json',$dados);
 
         header("Location: DISCindex.php");
+        exit();
+    }
+    else {
+        echo "Preencha todos os campos";
     }
 ?>
 </body>

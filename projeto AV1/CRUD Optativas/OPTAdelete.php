@@ -6,14 +6,14 @@ if(isset($_POST['modificar'])) {
     $indice_remover = -1;
     foreach($linhas as $indice => $linha) {
         $dados = explode(";", $linha);
-        if($dados[1] == $questaoID) { // Verifica se a dado contém a pergunta fornecida
+        if($dados[1] == $questaoID) { // Verifica se a linha contém a pergunta fornecida
             $indice_remover = $indice;
             break;
         }
     }
 
-    if($indice_remover !== -1) { // Se a dado for encontrada
-        // Remove a dado da pergunta
+    if($indice_remover !== -1) { // Se a linha for encontrada
+        // Remove a linha da pergunta
         unset($linhas[$indice_remover]);
 
         // Remove as 5 linhas seguintes (respostas)
