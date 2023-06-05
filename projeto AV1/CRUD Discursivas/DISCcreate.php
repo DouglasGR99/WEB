@@ -15,13 +15,12 @@
     </nav>
     <br>
     <form action="DISCcreate.php" method="POST">
+        Índice: <label>
+            <input type="text" id="id" name="id">
+        </label>
         Pergunta: <label>
             <input type="text" id="pergunta" name="pergunta">
         </label>
-        Índice da pergunta: <label>
-            <input type="text" id="id" name="id">
-        </label>
-        <br>
         Resposta: <label>
             <input type="text" id="resposta" name="resposta">
         </label>
@@ -37,8 +36,8 @@
 
         // dados do formulário
         $novaQuestao = array(
-            'pergunta' => $_POST['pergunta'],
             'id' => $_POST['id'],
+            'pergunta' => $_POST['pergunta'],
             'resposta' => $_POST['resposta']
         );
 
