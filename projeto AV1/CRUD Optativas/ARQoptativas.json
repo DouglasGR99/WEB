@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "pergunta": "Qual dos numeros abaixo \u00e9 maior do que 6?",
+        "alt1": "3",
+        "alt2": "4",
+        "alt3": "5",
+        "alt4": "6",
+        "alt5": "7",
+        "gabarito": "(e)"
+    },
+    {
+        "id": "2",
+        "pergunta": "Qual cor \u00e9 mais pr\u00f3xima do vermelho?",
+        "alt1": "verde",
+        "alt2": "azul",
+        "alt3": "amarelo",
+        "alt4": "rosa",
+        "alt5": "preto",
+        "gabarito": "(d)"
+    }
+]
