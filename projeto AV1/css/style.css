@@ -98,11 +98,15 @@ label {
 }
 
 .pagUpdate {
-    background-color: #5f2dde;
+  background-color: #5f2dde;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .pagDelete {
-    background-color: #f44336;
+  background-color: #f44336;
+  margin-left: 2px;
+  margin-right: 2px;
 }
   
   /* Tabela */

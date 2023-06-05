@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "pergunta": "Qual o nome do seu primeiro animal de estimação?",
+    "resposta": "Rex"
+  },
+  {
+    "id": 2,
+    "pergunta": "Qual o nome da sua primeira escola?",
+    "resposta": "Escola Estadual de Ensino Fundamental Professora Maria de Lourdes"
+  },
+  {
+    "id": 3,
+    "pergunta": "Qual o nome do seu melhor amigo de infância?",
+    "resposta": "João"
+  }
+]
