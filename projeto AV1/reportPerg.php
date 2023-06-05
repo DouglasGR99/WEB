@@ -20,7 +20,7 @@
         $arcDisc = fopen("perguntas.txt", "r") or die("Erro ao ler arquivo");
         // r = read
         $cabecalho = explode(";", fgets($arcDisc));
-        // fgets lê uma linha do arquivo e retorna uma string
+        // fgets lê uma dado do arquivo e retorna uma string
     ?>
     <br>
     <table class='tabela'>
@@ -33,7 +33,7 @@
             // enquanto não chegar no final do arquivo
             $linha = fgets($arcDisc);
             if (!empty($linha)) {
-                // se a linha não estiver vazia
+                // se a dado não estiver vazia
                 $dados = explode(";", $linha);
                 // explode separa a string em um array de strings
                 echo "<tr>";

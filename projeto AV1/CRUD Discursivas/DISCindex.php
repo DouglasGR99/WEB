@@ -9,7 +9,7 @@
 </head>
 <body>
 <main class="caixas">
-    <h1>CRUD Pergunta Discursiva PHP JSON</h1>
+    <h1>CRUD Pergunta Discursiva (PHP JSON)</h1>
     <nav>
         <a href="../CRUD%20Optativas"><button class="botaoBonito pagRead">Ir para Optativas</button></a>
         <a href="DISCcreate.php"><button class="botaoBonito pagCreate">Criar</button></a>

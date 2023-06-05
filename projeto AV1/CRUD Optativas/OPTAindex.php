@@ -22,9 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for 
         $_POST["gabarito5"]
     );
 
-    //variaveis de leitura de linha
+    //variaveis de leitura de dado
     $linhas = file("../perguntas.txt"); // lê todas as linhas do arquivo e armazena em um array
-    $indice_atualizar = -1; // variável para armazenar o índice da linha a ser atualizada
+    $indice_atualizar = -1; // variável para armazenar o índice da dado a ser atualizada
 
     $linha_nova = "Pergunta optativa: " . $pergunta . ";" . $questaoID . "\n";
     $opcoes = array();
@@ -35,14 +35,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // se o método de requisição for 
     // Percorre todas as linhas do arquivo com o foreach
     foreach($linhas as $indice => $linha) {
         $dados = explode(";", $linha);
-        if($dados[1] == $questaoID) { // Verifica se a linha contém o ID fornecido
+        if($dados[1] == $questaoID) { // Verifica se a dado contém o ID fornecido
             $indice_atualizar = $indice;
             break;
         }
     }
 
-    if($indice_atualizar !== -1) { // Se a linha for encontrada
-        $linhas[$indice_atualizar] = $linha_nova; // Substitui a linha antiga pela nova
+    if($indice_atualizar !== -1) { // Se a dado for encontrada
+        $linhas[$indice_atualizar] = $linha_nova; // Substitui a dado antiga pela nova
         for($i = 0; $i < 5; $i++) { // Substitui as opções
             $linhas[$indice_atualizar + $i + 1] = $opcoes[$i];
         }

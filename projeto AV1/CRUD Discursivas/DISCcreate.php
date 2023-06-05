@@ -9,51 +9,41 @@
 </head>
 <body>
 <main class="caixas">
-    <h1>Criar Pergunta Discursiva</h1>
+    <h1>Criar Pergunta Discursiva (PHP JSON)</h1>
     <nav>
         <a href="DISCindex.php"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
-    </nav>
-    <br>
+    </nav><br>
+
     <form action="DISCcreate.php" method="POST">
-        Pergunta: <label>
-            <input type="text" id="pergunta" name="pergunta">
-        </label>
-        Índice da pergunta: <label>
-            <input type="text" id="id" name="id">
-        </label>
-        <br>
-        Resposta: <label>
-            <input type="text" id="resposta" name="resposta">
-        </label>
+        Índice: <label> <input type="text" id="id" name="id"> </label>
+        Pergunta: <label> <input type="text" id="pergunta" name="pergunta"> </label>
+        Resposta: <label> <input type="text" id="resposta" name="resposta"> </label>
+        <br><br>
         <input type="submit" name="salvar" value="Criar Questão" class="botaoBonito botaoArquivo">
     </form>
 </main>
 
 <?php
     if (isset($_POST['salvar'])) {
-        // abre o arquivo perguntas.json
+        // Abre o arquivo perguntas.json
         $dados = file_get_contents('ARQdiscursivas.json');
         $dados = json_decode($dados);
 
-        // dados do formulário
+        // Dados do formulário
         $novaQuestao = array(
-            'pergunta' => $_POST['pergunta'],
             'id' => $_POST['id'],
+            'pergunta' => $_POST['pergunta'],
             'resposta' => $_POST['resposta']
         );
 
-        // adiciona os dados do formulário no array
+        // Adiciona os dados do formulário no array
         $dados[] = $novaQuestao;
 
-        // salva os dados no arquivo perguntas.json
+        // Salva os dados no arquivo perguntas.json
         $dados = json_encode($dados, JSON_PRETTY_PRINT);
         file_put_contents('ARQdiscursivas.json',$dados);
 
         header("Location: DISCindex.php");
-        exit();
-    }
-    else {
-        echo "Preencha todos os campos";
     }
 ?>
 </body>
