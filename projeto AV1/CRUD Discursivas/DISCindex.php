@@ -1,4 +1,3 @@
-// Objetivo: Apresentar as perguntas discursivas cadastradas e permitir a atualização das mesmas
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,7 +12,7 @@
     <h1>CRUD Pergunta Discursiva PHP JSON</h1>
     <nav>
         <a href="../CRUD%20Optativas"><button class="botaoBonito pagRead">Ir para Optativas</button></a>
-        <a href=""><button class="botaoBonito pagCreate">Criar</button></a>
+        <a href="DISCcreate.php"><button class="botaoBonito pagCreate">Criar</button></a>
     </nav>
     <br>
     <table class="tabela">
