@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fornulario Pergunta Discursiva php</title>
+    <title>Criar Questão Discursiva (PHP JSON)</title>
 </head>
 <body>
 <main class="caixas">
-    <h1>Criar Pergunta Discursiva</h1>
+    <h1>Criar Questão Discursiva (PHP JSON)</h1>
     <nav>
         <a href="DISCindex.php"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
     </nav>
