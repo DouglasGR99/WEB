@@ -14,7 +14,7 @@
         <a href="DISCindex.php"><button class="botaoBonito pagInicio">Voltar a pag Inicial</button></a>
     </nav>
     <br>
-    <form action="DISCcreate.php" method="POST">
+    <form method="POST" onsubmit="cria()">
         Índice: <label>
             <input type="text" id="id" name="id">
         </label>
@@ -29,7 +29,7 @@
 </main>
 
 <?php
-    if (isset($_POST['salvar'])) {
+/*    if (isset($_POST['salvar'])) {
         // abre o arquivo perguntas.json
         $dados = file_get_contents('ARQdiscursivas.json');
         $dados = json_decode($dados);
@@ -54,6 +54,6 @@
     else {
         echo "Preencha todos os campos";
     }
-?>
+*/?>
 </body>
 </html>
