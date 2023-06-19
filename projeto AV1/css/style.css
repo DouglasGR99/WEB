@@ -1,136 +1,179 @@
-/* Body */
+/* Estilo básico */
 body {
-    background-color: #f2f2f2;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  /* Boxes */
-  .caixas {
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    padding: 20px;
-    border-radius: 6px;
-    border: 1px solid #e6e6e6;
-    position: relative;
-    padding-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Main */
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  /* Mensagem de aviso */
-    .aviso {
-        background-color: #b03f3b;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-        font-size: 16px;
-    }
-
-/* Formulários */
-form {
-  display: flex;
-  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: #fff;
 }
 
-label {
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "content";
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.btn {
+  margin: 1px;
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border-radius: 4px;
+}
+
+.btn + .btn {
+  margin-left: 10px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+.btn-danger {
+  background-color: #f44336;
+}
+
+.btn-warning {
+  background-color: #ff9800;
+}
+
+.btn-danger:hover {
+  background-color: #e53935;
+}
+
+.btn-warning:hover {
+  background-color: #fb8c00;
+}
+
+
+.content {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.form-section {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 20px;
+}
+
+.table-section {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Estilo do formulário */
+fieldset {
+  border: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+legend {
+  font-size: 24px;
+  font-weight: bold;
   margin-bottom: 10px;
 }
-  
-  /* Botão */
-  .botaoBonito {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
-  }
-  
-  .botaoBonito:hover {
-    opacity: 0.8;
-  }
-  
-  .positivo {
-    background-color: #4CAF50;
-  }
-  
-  .negativo {
-    background-color: #f44336;
-  }
 
-
-
-.botaoArquivo {
-  /*position: absolute;*/
-  bottom: 10px;
-  left: 10px;
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
-.botaoPagina {
-  /*position: absolute;*/
-  bottom: 10px;
-  right: 10px;
-  background-color: #000000;
-}
-
-.pagInicio {
-  background-color: #b45f00;
-}
-
-.pagCreate {
+input[type="submit"] {
   background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.pagRead {
-  background-color: #87d2e7;
+input[type="submit"]:hover {
+  background-color: #45a049;
 }
 
-.pagUpdate {
-    background-color: #5f2dde;
+/* Estilo da tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.pagDelete {
-    background-color: #f44336;
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
-  
-  /* Tabela */
-  .tabela {
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .tabela td,
-  .tabela th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  .tabela tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .tabela tr:hover {
-    background-color: #ddd;
-  }
-  
-  .tabela th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-  }
-  
+
+th {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Estilo dos botões */
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border-radius: 4px;
+}
+
+.btn-danger {
+  background-color: #f44336;
+}
+
+.btn-warning {
+  background-color: #ff9800;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+.btn-danger:hover {
+  background-color: #e53935;
+}
+
+.btn-warning:hover {
+  background-color: #fb8c00;
+}
