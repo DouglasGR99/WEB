@@ -1,3 +1,34 @@
+<?php
+    global $connect;
+    require 'conectaOPT.php';
+
+    //create
+    if (isset($_POST['salvar'])) {
+        $enunciado = $_POST['enunciado'];
+        $a = $_POST['a'];
+        $b = $_POST['b'];
+        $c = $_POST['c'];
+        $d = $_POST['d'];
+        $gabarito = $_POST['gabarito'];
+
+        $sql = "INSERT INTO optativas (enunciado, a, b, c, d, gabarito) VALUES ('$enunciado', '$a', '$b', '$c', '$d', '$gabarito')";
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        header("Location: index.php");
+    }
+
+    //delete
+    if (isset($_GET['delete_id'])) {
+        $stmt = $connect->prepare("DELETE FROM optativas WHERE id = :id");
+        $stmt->bindParam(":id", $_GET['delete_id']);
+        $stmt->execute();
+        header("Location: index.php");
+    }
+
+    $stmt = $connect->prepare("SELECT * FROM optativas");
+    $stmt->execute();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,7 +49,7 @@
     <div class="content">
         <div class="form-section">
             <!-- Formulário para inserir dados -->
-            <form id="perguntaForm" autocomplete="off">
+            <form method="post" autocomplete="off">
                 <fieldset>
                     <legend>Criar pergunta</legend>
                     <table class="tabela">
@@ -48,7 +79,7 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td><input class="btn btn-sucess" type="submit" value="Salvar"></td>
+                            <td><input class="btn btn-sucess" type="submit" name="salvar" value="Salvar"></td>
                         </tr>
                     </table>
                 </fieldset>
@@ -56,8 +87,7 @@
         </div>
         <div class="table-section">
             <!-- Mostrando os dados do banco de dados -->
-            <table id="perguntaTable" class="tabela">
-                <thead>
+            <table class="tabela">
                 <tr>
                     <th>ID</th>
                     <th>Enunciado</th>
@@ -68,13 +98,25 @@
                     <th>Resposta correta</th>
                     <th>Ação</th>
                 </tr>
-                </thead>
-                <tbody></tbody>
+                <?php while ($row = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
+                    <tr>
+                        <td><?php echo $row->id; ?></td>
+                        <td><?php echo $row->enunciado; ?></td>
+                        <td><?php echo $row->a; ?></td>
+                        <td><?php echo $row->b; ?></td>
+                        <td><?php echo $row->c; ?></td>
+                        <td><?php echo $row->d; ?></td>
+                        <td><?php echo '(' . $row->gabarito . ')'; ?></td>
+                        <td>
+                            <a onclick="return confirm('Tem certeza que deseja editar?')" class="btn btn-warning" href="editaOPT.php?edit_id=<?php echo $row->id; ?>">Editar</a>
+                            <br>
+                            <a onclick="return confirm('Tem certeza que deseja deletar?')" class="btn btn-danger" href="?delete_id=<?php echo $row->id; ?>">Delete</a>
+                        </td>
+                    </tr>
+                <?php } ?>
             </table>
         </div>
     </div>
 </div>
-
-<script src="script.js"></script>
 </body>
 </html>
