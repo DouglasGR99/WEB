@@ -1,6 +1,6 @@
 <?php
-    global $connect;
-    require_once 'conectaOPT.php';
+global $connect;
+require_once 'conectaOPT.php';
 
 $stmt = $connect->prepare('SELECT * FROM optativas WHERE id = :id');
 $stmt->bindParam(":id", $_GET['edit_id']); // Alterado de $_GET['id'] para $_GET['edit_id']
@@ -19,7 +19,6 @@ if (isset($_POST['salvar'])) {
     $stmt->execute();
     header("Location: index.php");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -71,3 +70,5 @@ if (isset($_POST['salvar'])) {
         </fieldset>
     </form>
 </div>
+</body>
+</html>
