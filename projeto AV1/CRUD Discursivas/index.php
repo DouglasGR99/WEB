@@ -31,7 +31,7 @@
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
-                        <td><input class="btn btn-sucess" type="submit" name="salvar" value="Salvar"></td>
+                        <td><input class="btn btn-sucess" type="submit" name="salvar" value="Salvar" onclick="enviarDados()"></td>
                     </tr>
                 </table>
             </form>
@@ -78,9 +78,7 @@
 </div>
 
 <script>
-    document.getElementById('formDiscursivas').addEventListener('submit', function(event) {
-        event.preventDefault(); // Impede o envio do formulário
-
+    function enviarDados() {
         // Obtenha os valores dos campos do formulário
         var enunciado = document.getElementById('enunciado').value;
         var resposta = document.getElementById('resposta').value;
@@ -94,7 +92,7 @@
         // Converta os dados para JSON
         var jsonData = JSON.stringify(dados);
 
-        // Faça uma requisição HTTP para o arquivo PHP
+        // Faça uma requisição HTTP para a função de inserção
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
@@ -103,10 +101,10 @@
                 location.reload(); // Atualize a página após a inserção
             }
         };
-        xhttp.open('POST', 'inserir_dados.php', true);
+        xhttp.open('POST', 'funcoes.php', true);
         xhttp.setRequestHeader('Content-type', 'application/json');
         xhttp.send(jsonData);
-    });
+    }
 </script>
 </body>
 </html>
