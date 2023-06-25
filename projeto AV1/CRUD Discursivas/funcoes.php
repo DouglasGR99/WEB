@@ -4,9 +4,8 @@ require 'conectaDIS.php';
 function inserirDados($enunciado, $resposta) {
     global $connect;
 
-    // Insira os dados no banco de dados
     $sql = "INSERT INTO discursivas (enunciado, resposta) VALUES (:enunciado, :resposta)";
-    $stmt = $connect->prepare($sql);
+    $stmt = $connect->prepare($sql); // prepara a query para ser executada
     $stmt->bindParam(':enunciado', $enunciado);
     $stmt->bindParam(':resposta', $resposta);
     $stmt->execute();
@@ -14,13 +13,28 @@ function inserirDados($enunciado, $resposta) {
     echo 'Dados inseridos com sucesso!';
 }
 
-// Recupere os dados JSON enviados
-$data = json_decode(file_get_contents('php://input'), true);
+function excluirRegistro($id) {
+    global $connect;
 
-// Acesse os valores dos campos do formulário
-$enunciado = $data['enunciado'];
-$resposta = $data['resposta'];
+    $sql = "DELETE FROM discursivas WHERE id = :id";
+    $stmt = $connect->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
 
-// Chame a função para inserir os dados
-inserirDados($enunciado, $resposta);
+    echo 'Registro excluído com sucesso!';
+}
+
+if (isset($_GET['delete_id'])) { // Se o ID a ser excluído foi enviado
+    $id = $_GET['delete_id'];
+    excluirRegistro($id);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Se os dados foram enviados via POST
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    $enunciado = $data['enunciado'];
+    $resposta = $data['resposta'];
+
+    inserirDados($enunciado, $resposta);
+}
 ?>

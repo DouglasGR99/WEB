@@ -49,14 +49,6 @@
                 global $connect;
                 require 'conectaDIS.php';
 
-                //delete
-                if (isset($_GET['delete_id'])) {
-                    $stmt = $connect->prepare("DELETE FROM discursivas WHERE id = :id");
-                    $stmt->bindParam(":id", $_GET['delete_id']);
-                    $stmt->execute();
-                    header("Location: index.php");
-                }
-
                 $stmt = $connect->prepare("SELECT * FROM discursivas");
                 $stmt->execute();
 
@@ -68,7 +60,7 @@
                         <td>
                             <a onclick="return confirm('Tem certeza que deseja editar?')" class="btn btn-warning" href="editaDIS.php?edit_id=<?php echo $row->id; ?>">Editar</a>
                             <br>
-                            <a onclick="return confirm('Tem certeza que deseja deletar?')" class="btn btn-danger" href="?delete_id=<?php echo $row->id; ?>">Delete</a>
+                            <a onclick="excluirRegistro(<?php echo $row->id; ?>)" class="btn btn-danger" href="#">Delete</a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -79,31 +71,40 @@
 
 <script>
     function enviarDados() {
-        // Obtenha os valores dos campos do formulário
         var enunciado = document.getElementById('enunciado').value;
         var resposta = document.getElementById('resposta').value;
 
-        // Crie um objeto com os dados do formulário
         var dados = {
             enunciado: enunciado,
             resposta: resposta
         };
 
-        // Converta os dados para JSON
-        var jsonData = JSON.stringify(dados);
+        var jsonData = JSON.stringify(dados); // Converte o array de dados em JSON
 
-        // Faça uma requisição HTTP para a função de inserção
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
                 // Ação a ser executada após a inserção no banco de dados
                 console.log(this.responseText);
-                location.reload(); // Atualize a página após a inserção
+                location.reload(); // Atualiza a página após a inserção
             }
         };
         xhttp.open('POST', 'funcoes.php', true);
-        xhttp.setRequestHeader('Content-type', 'application/json');
-        xhttp.send(jsonData);
+        xhttp.setRequestHeader('Content-type', 'application/json'); // Informa o tipo de conteúdo
+        xhttp.send(jsonData); // Envia o JSON em si
+    }
+
+    function excluirRegistro(id) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                // Ação a ser executada após a exclusão no banco de dados
+                console.log(this.responseText);
+                location.reload(); // Atualiza a página após a exclusão
+            }
+        };
+        xhttp.open('GET', 'funcoes.php?delete_id=' + id, true); // Envia o ID a ser excluído
+        xhttp.send();
     }
 </script>
 </body>
