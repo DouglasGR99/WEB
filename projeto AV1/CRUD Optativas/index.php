@@ -50,7 +50,6 @@
         <div class="form-section">
             <!-- Formulário para inserir dados -->
             <form method="post" autocomplete="off">
-                <fieldset>
                     <legend>Criar pergunta</legend>
                     <table class="tabela">
                         <tr>
@@ -82,7 +81,6 @@
                             <td><input class="btn btn-sucess" type="submit" name="salvar" value="Salvar"></td>
                         </tr>
                     </table>
-                </fieldset>
             </form>
         </div>
         <div class="table-section">
