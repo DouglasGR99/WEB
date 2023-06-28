@@ -1,34 +1,3 @@
-<?php
-    global $connect;
-    require 'conectaOPT.php';
-
-    //create
-    if (isset($_POST['salvar'])) {
-        $enunciado = $_POST['enunciado'];
-        $a = $_POST['a'];
-        $b = $_POST['b'];
-        $c = $_POST['c'];
-        $d = $_POST['d'];
-        $gabarito = $_POST['gabarito'];
-
-        $sql = "INSERT INTO optativas (enunciado, a, b, c, d, gabarito) VALUES ('$enunciado', '$a', '$b', '$c', '$d', '$gabarito')";
-        $stmt = $connect->prepare($sql);
-        $stmt->execute();
-        header("Location: index.php");
-    }
-
-    //delete
-    if (isset($_GET['delete_id'])) {
-        $stmt = $connect->prepare("DELETE FROM optativas WHERE id = :id");
-        $stmt->bindParam(":id", $_GET['delete_id']);
-        $stmt->execute();
-        header("Location: index.php");
-    }
-
-    $stmt = $connect->prepare("SELECT * FROM optativas");
-    $stmt->execute();
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -49,7 +18,7 @@
     <div class="content">
         <div class="form-section">
             <!-- Formulário para inserir dados -->
-            <form method="post" autocomplete="off">
+            <form method="post" autocomplete="off" id="formOptativas">
                     <legend>Criar pergunta</legend>
                     <table class="tabela">
                         <tr>
@@ -58,19 +27,19 @@
                         </tr>
                         <tr>
                             <td>(a)</td>
-                            <td><label for="a"></label><input id="a" type="text" name="a" required></td>
+                            <td><label for="a"></label><input id="opca" type="text" name="opca" required></td>
                         </tr>
                         <tr>
                             <td>(b)</td>
-                            <td><label for="b"></label><input id="b" type="text" name="b" required></td>
+                            <td><label for="b"></label><input id="opcb" type="text" name="opcb" required></td>
                         </tr>
                         <tr>
                             <td>(c)</td>
-                            <td><label for="c"></label><input id="c" type="text" name="c" required></td>
+                            <td><label for="c"></label><input id="opcc" type="text" name="opcc" required></td>
                         </tr>
                         <tr>
                             <td>(d)</td>
-                            <td><label for="d"></label><input id="d" type="text" name="d" required></td>
+                            <td><label for="d"></label><input id="opcd" type="text" name="opcd" required></td>
                         </tr>
                         <tr>
                             <td>Resposta correta:</td>
@@ -78,7 +47,7 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td><input class="btn btn-sucess" type="submit" name="salvar" value="Salvar"></td>
+                            <td><input class="btn btn-sucess" type="submit" name="salvar" value="Salvar" onclick="enviarDados()"></td>
                         </tr>
                     </table>
             </form>
@@ -96,7 +65,11 @@
                     <th>Resposta correta</th>
                     <th>Ação</th>
                 </tr>
-                <?php while ($row = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
+                <?php
+                global $connect;
+                require 'conectaOPT.php';
+                $stmt = $connect->prepare("SELECT * FROM optativas");
+                while ($row = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
                     <tr>
                         <td><?php echo $row->id; ?></td>
                         <td><?php echo $row->enunciado; ?></td>
@@ -108,7 +81,7 @@
                         <td>
                             <a onclick="return confirm('Tem certeza que deseja editar?')" class="btn btn-warning" href="editaOPT.php?edit_id=<?php echo $row->id; ?>">Editar</a>
                             <br>
-                            <a onclick="return confirm('Tem certeza que deseja deletar?')" class="btn btn-danger" href="?delete_id=<?php echo $row->id; ?>">Delete</a>
+                            <a onclick="excluirRegistro(<?php echo $row->id; ?>)" class="btn btn-danger" href="#">Delete</a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -116,5 +89,7 @@
         </div>
     </div>
 </div>
+
+<script src="script.js"></script>
 </body>
 </html>

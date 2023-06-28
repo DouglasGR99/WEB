@@ -8,13 +8,13 @@ $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_OBJ);
 
 if (isset($_POST['salvar'])) {
-    $stmt = $connect->prepare('UPDATE optativas SET enunciado = :enunciado, a = :a, b = :b, c = :c, d = :d, gabarito = :gabarito WHERE id = :id');
+    $stmt = $connect->prepare('UPDATE optativas SET enunciado = :enunciado, a = :opca, b = :opcb, c = :opcc, d = :opcd, gabarito = :gabarito WHERE id = :id');
     $stmt->bindParam(":id", $_GET['edit_id']); // Alterado de $_GET['id'] para $_GET['edit_id']
     $stmt->bindParam(":enunciado", $_POST['enunciado']);
-    $stmt->bindParam(":a", $_POST['a']);
-    $stmt->bindParam(":b", $_POST['b']);
-    $stmt->bindParam(":c", $_POST['c']);
-    $stmt->bindParam(":d", $_POST['d']);
+    $stmt->bindParam(":opca", $_POST['opca']);
+    $stmt->bindParam(":opcb", $_POST['opcb']);
+    $stmt->bindParam(":opcc", $_POST['opcc']);
+    $stmt->bindParam(":opcd", $_POST['opcd']);
     $stmt->bindParam(":gabarito", $_POST['gabarito']);
     $stmt->execute();
     header("Location: index.php");
@@ -45,19 +45,19 @@ if (isset($_POST['salvar'])) {
                 </tr>
                 <tr>
                     <td>(a)</td>
-                    <td><label for="a"></label><input id="a" type="text" name="a" value="<?php echo $row->a; ?>" required></td>
+                    <td><label for="a"></label><input id="opca" type="text" name="opca" value="<?php echo $row->a; ?>" required></td>
                 </tr>
                 <tr>
                     <td>(b)</td>
-                    <td><label for="b"></label><input id="b" type="text" name="b" value="<?php echo $row->b; ?>" required></td>
+                    <td><label for="b"></label><input id="opcb" type="text" name="opcb" value="<?php echo $row->b; ?>" required></td>
                 </tr>
                 <tr>
                     <td>(c)</td>
-                    <td><label for="c"></label><input id="c" type="text" name="c" value="<?php echo $row->c; ?>" required></td>
+                    <td><label for="c"></label><input id="opcc" type="text" name="opcc" value="<?php echo $row->c; ?>" required></td>
                 </tr>
                 <tr>
                     <td>(d)</td>
-                    <td><label for="d"></label><input id="d" type="text" name="d" value="<?php echo $row->d; ?>" required></td>
+                    <td><label for="d"></label><input id="opcd" type="text" name="opcd" value="<?php echo $row->d; ?>" required></td>
                 </tr>
                 <tr>
                     <td>Gabarito:</td>
