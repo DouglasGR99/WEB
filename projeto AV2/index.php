@@ -18,17 +18,21 @@
 
     <div class="content">
         <div class="form-section">
-            <!-- Formulário para inserir dados -->
-            <form method="post" autocomplete="off" id="formDiscursivas">
-                <legend>Criar pergunta</legend>
+            <!-- Formulário para incluir fiscal -->
+            <form method="post" autocomplete="off" id="formFilscal">
+                <legend>Incluir Fiscal</legend>
                 <table class="tabela">
                     <tr>
-                        <td>Enunciado:</td>
-                        <td><input id="enunciado" type="text" name="enunciado" required></td>
+                        <td>CPF:</td>
+                        <td><input id="CPF" type="text" name="CPF" required></td>
                     </tr>
                     <tr>
-                        <td>Resposta:</td>
-                        <td><label for="resposta"></label><input id="resposta" type="text" name="resposta" required></td>
+                        <td>Nome:</td>
+                        <td><label for="nome"></label><input id="nome" type="text" name="nome" required></td>
+                    </tr>
+                    <tr>
+                        <td>Sala:</td>
+                        <td><label for="cod_sala"></label><input id="cod_sala" type="text" name="cod_sala" required></td>
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
@@ -65,7 +69,7 @@
                         <td><?php echo $row->RG; ?></td>
                         <td><?php echo $row->email; ?></td>
                         <td><?php echo $row->cargo_pretendido; ?></td>
-                        <td><?php echo $row->sala; ?></td>
+                        <td><?php echo $row->cod_sala; ?></td>
                         <td><a onclick="return confirm('Tem certeza que deseja alterar sala?')" class="btn btn-warning" href="altera_sala.php?edit_id=<?php echo $row->id; ?>">Alterar sala</a></td>
                     </tr>
                 <?php } ?>
@@ -92,7 +96,7 @@
                     <tr>
                         <td><?php echo $row->CPF; ?></td>
                         <td><?php echo $row->Nome; ?></td>
-                        <td><?php echo $row->sala; ?></td>
+                        <td><?php echo $row->cod_sala; ?></td>
                     </tr>
                 <?php } ?>
             </table>
